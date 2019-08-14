@@ -5,6 +5,8 @@
 
 **Author**: Nicolas Flandrois
 
+**License**: MIT License Copyright (c) 2019 Nicolas Flandrois
+
 -------------------------------------------------------------
 
 **Description**:
