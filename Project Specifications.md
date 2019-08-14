@@ -3,7 +3,9 @@ PROJECT 7
 ## Créez GrandPy Bot, le papy-robot
 
 70 heures
+
 Mis à jour le jeudi 28 mars 2019
+
 [openclassrooms.com](openclassrooms.com) - DA Python
 
 ------------------------------------------------------------------------------
@@ -57,31 +59,38 @@ En-dessous, une carte Google Maps apparaît également avec un marqueur indiquan
 
 ## Étapes
 1. **Planifier son projet**
+
 Découpez votre projet en étapes et sous-étapes en suivant une méthodologie de projet agile que vous adapterez à vos besoins. Remplissez un tableau Trello ou Pivotal Tracker.
 Avant de coder, initialisez un repo Github et faites votre premier push.
 
 2. **Initialiser Flask**
+
 Créez un nouveau projet avec Flask, un framework Python très léger.
 Adoptez une approche Test Driven Development: commencez par écrire vos tests (qui seront rouges), puis votre code (vos tests seront alors verts) et refactorisez.
 
 3. **Interface Utilisateur**
+
 Concevez le front-end du site en vous aidant de Bootstrap si vous le souhaitez. L'interface doit être responsive et consultable sur mobile !
 
 4. **Un parser de killer**
+
 Comment allez-vous analyser la question qui est envoyée ? Tout simplement en la "parsant" (à prononcer "parssant"). Quel mot barbare ! "Parser" veut dire "découper un ensemble de données en petits ensembles manipulables séparément". En l'occurrence, vous découperez la phrase en mots que vous analyserez ensuite pour ne garder que les mots-clés (une adresse par exemple).
 
     *Petite astuce : vous pouvez utiliser cette excellente [base de stop words](https://github.com/6/stopwords-json/blob/master/dist/fr.json) en français 🇫🇷*
 
 5. **Afficher les résultats de la recherche Google Maps**
+
 Commencez par lire la documentation de l'API Google Maps pour l'initialiser dans votre projet. Puis intéressez-vous à la recherche : comment allez-vous interroger l'API pour la requête "Paris" par exemple ? Quel type de réponse recevrez-vous ? Sous quel format ?
 Utilisez cette réponse pour la formater à vos besoins et l'afficher dans votre page. Enfin, trouvez le moyen d'afficher une carte sous le message.
 Utilisez un mock pour tester cette nouvelle fonctionnalité.
 
 6. **Père Castor, raconte-nous une histoire**
+
 Développez la nouvelle fonctionnalité qui donne une âme à notre Papy Robot ! Vous allez récupérer les informations de Wikipedia correspondant à l’endroit recherché et afficher les premières lignes.
 Pour cela, répétez l'étape 4 mais cette fois-ci en utilisant l'API Media Wiki. Vous pouvez également vous amuser en inventant plusieurs phrases différentes que GrandPy pourrait dire aléatoirement 🤓
 
 7. **Mise en ligne**
+
 Puis mettez en ligne votre belle application en utilisant Heroku.
 
     ***N'oubliez pas : tous vos tests doivent être verts !***
