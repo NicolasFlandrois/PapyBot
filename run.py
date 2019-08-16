@@ -12,5 +12,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/message/<str:msg>')
+def msg(msg):
+    return #return truc bidon pour test puis changer avec API plus tard
+
 if __name__ == "__main__":
     app.run(debug=True)

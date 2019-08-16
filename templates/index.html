@@ -1,5 +1,7 @@
 <!-- Author : Nicolas Flandrois -->
 <!-- Date : Thu 15 Aug 2019 18:51:34 CEST -->
+<!-- HTML User Interface page, including CSS style in Bootstrap features -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +32,7 @@
                 <div class="dropdown-menu dropdown-menu-right m-3">
 
                     <div class="dropdown-item dropdown-header" title="A Propos" data-target="#aboutcontent">A propos de PapyBot</div>
-                        <div id="aboutcontent" class="text-wrap" style="width: auto;">
+                        <div id="aboutcontent" class="text-wrap m-3 text-justify" style="width: auto;">
                             <p>Papy Bot est un projet effectué dans le cadre de la formation OpenClassrooms Développeur d'applications Python.</p>
                             <p>Le but du projet est de créer un bot qui prend en entrée une phrase envoyée par l'utilisateur et qui requête
                                 Google Maps et Wikipedia pour obtenir des informations sur le lieu et l'histoire du sujet évoqué.
@@ -48,33 +50,32 @@
     <!-- Dialog Box -->
     <div id="dialogDisplay" class="container d-flex">
         <!-- Text Dialog Box -->
+        <!-- Size fitting = ~ 50% of the page margin/padding included for All screen size but sm and xs which fits 100% -->
         <div id="dialogbox" class="m-0 m-md-2  mx-auto">Text Dialog Here</div>
         <!-- https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
 
         <!-- Map Display Box -->
+        <!-- Size fitting = ~ 50% of the page margin/padding included for All screen size but sm and xs which fits 100% -->
         <div id="mapbox" class="m-0 m-md-2  mx-auto">Map Here</div>
     </div>
 
 
     <!-- Form to input question -->
+    <!-- Align center those input forms -->
     <form id="shoutform" class="form-horizontal" autocomplete="off">
-        <fieldset>
-            <div class="form-group">
-              <div class="col-md-offset-3 col-md-6">
-                <div class="input-group">
-                  <input id="user_post" name="user_post" required="required"
-                         class="form-control" placeholder="Entrez votre message" type="text">
-                  <span class="input-group-btn">
-                      <input type="submit" id="go" class="form-control" value="Envoyer">
-                  </span>
-                </div>
-              </div>
+        <fieldset class="w-100 d-flex align-content-center">
+            <div class="col col-2">
+                <input id="user_post" name="user_post" required="required"
+                         class="form-control " placeholder="Entrez votre message" type="text">
+            </div>
+            <div class="col col-3">
+                <input type="submit" id="go" class="form-control" value="Envoyer">
             </div>
         </fieldset>
     </form>
 
 
-    <footer class="footer flex-shrink-0 py-4 bg-dark text-white-50">
+    <footer class="footer fixed-bottom flex-shrink-0 py-4 bg-dark text-white-50">
         <div class="d-flex footer_block">
             <div class="footer_icon m-3 mx-auto">
                 <a href="https://github.com/NicolasFlandrois" title="Github" target="_blank"><img src="{{ url_for('static', filename='github.png')}}" width="50" height="50" class="icon_ft" alt="Github" /></a>
