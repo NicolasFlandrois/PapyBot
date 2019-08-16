@@ -7,12 +7,14 @@
     <meta name="author" content="Nicolas Flandrois">
 
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Bootstrap Settings -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device-width, initial-scale = 1 shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Papy Bot !</title>
     <link rel="shortcut icon" href="favicon.ico">
+
 
     <style>
         .jumbotron {
@@ -36,12 +38,12 @@
 
         <img src="img/grandpy-round.png" width="75" height="auto" class="navbar-brand mr-0 mr-md-2  mx-auto" viewbox="0 0 612 612" role="img" focusable="false">
 
-        <h1 id="pageTitle" class=" mx-auto">Papy Bot</h1>
+        <h1 id="pageTitle" class="mx-auto">Papy Bot</h1>
 
         <div class="input-group-append dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" data-display="static">Info
+            <button class="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" data-display="static">Info
 
-                <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-right m-3">
 
                     <div class="dropdown-item dropdown-header" title="A Propos" data-target="#aboutcontent">A propos de PapyBot</div>
                         <div id="aboutcontent" class="text-wrap" style="width: 30rem;">
@@ -52,14 +54,14 @@
                             <p>Le but du projet est de créer un bot qui prend en entrée une phrase envoyée par l'utilisateur et qui requête
                                 Google Maps et Wikipedia pour obtenir des informations sur le lieu et l'histoire du sujet évoqué.
                             </p>
-                            <p class="mb-0">Le code source du projet est disponible sur
-                                <a href="https://github.com/NicolasFlandrois/PapyBot.git" title="Github PapyBot" target="_blank">GitHub</a>.
+                            <p>Le code source du projet est disponible sur
+                                <a href="https://github.com/NicolasFlandrois/PapyBot.git" title="Auhtor's Github PapyBot" target="_blank">GitHub</a>.
                             </p>
                         </div>
                     <div role="separator" class="dropdown-divider"></div>
                     <div class="dropdown-header">A propos de l'Auteur</div>
-                    <div class="dropdown-item list-group-item list-group-item-action"><a href="https://github.com/NicolasFlandrois" title="Github" target="_blank">GitHub</a></div>
-                    <div class="dropdown-item list-group-item list-group-item-action"><a href="https://www.linkedin.com/in/nicolasflandrois" title="Linkedin" target="_blank">LinkedIn</a></div>
+                    <a class="dropdown-item list-group-item list-group-item-action" href="https://www.linkedin.com/in/nicolasflandrois" title="Linkedin" target="_blank">LinkedIn</a>
+                    <a class="dropdown-item list-group-item list-group-item-action" href="https://github.com/NicolasFlandrois" title="Github" target="_blank">GitHub</a>
 
                 </div>
             </button>
@@ -67,7 +69,16 @@
 
     </header>
 
-    <!--Add here, Box todisplay Dialog scrollspy + Box to display G-map view == Layout Horizontally Flex-->
+
+    <!-- Dialog Box -->
+    <div id="dialogDisplay" class="container d-flex">
+        <!-- Text Dialog Box -->
+        <div id="dialogbox" class="m-0 m-md-2  mx-auto">Text Dialog Here</div>
+
+        <!-- Map Display Box -->
+        <div id="mapbox" class="m-0 m-md-2  mx-auto">Map Here</div>
+    </div>
+
 
     <!-- Form to input question -->
     <form id="shoutform" class="form-horizontal" autocomplete="off">
@@ -87,23 +98,24 @@
     </form>
 
 
-    <footer class="footer">
+    <footer class="footer jumbotron">
         <div class="d-flex footer_block">
-            <div class="footer_icon">
+            <div class="footer_icon m-3 mx-auto">
                 <a href="https://github.com/NicolasFlandrois" title="Github" target="_blank"><img src="img/github.png" width="50" height="50" class="icon_ft" alt="Github" /></a>
             </div>
-            <div class="footer_icon">
+            <div class="footer_icon m-3 mx-auto">
                 <a href="https://www.linkedin.com/in/nicolasflandrois" title="Linkedin" target="_blank"><img src="img/lin.png" width="50" height="50" class="icon_ft" alt="Linkedin" /></a>
             </div>
-            <div class="footer_icon">
+            <div class="footer_icon m-3 mx-auto">
                 <a href="https://openclassrooms.com/" title="Openclassrooms" target="_blank"><img src="img/openclassrooms.png" width="50" height="50" class="icon_ft" alt="Openclassrooms" /></a>
             </div>
         </div>
-        <div class="auteur">
-            <span>2019 · Nicolas Flandrois.</span>
+        <div class="auteur m-3 mx-auto">
+            <span>Nicolas Flandrois &copy; 2019 &middot; MIT License.</span>
         </div>
     </footer>
 
+    <!-- Bootstrap CND Jquery, Popper, JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
