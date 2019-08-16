@@ -1,0 +1,13 @@
+Flask==0.12.2
+Flask-Cors==3.0.3
+Flask-GoogleMaps==0.2.6
+Flask-Testing==0.7.1
+geojson==2.4.1
+googlemaps==3.0.2
+pymediawiki==0.6.1
+pyparsing==2.4.0
+pytest==5.0.1
+requests==2.18.4
+wikipedia==1.4.0
+Wikipedia-API==0.4.4
+gunicorn==19.7.1
