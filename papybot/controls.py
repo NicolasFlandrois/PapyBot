@@ -6,7 +6,7 @@
 import json
 import random
 
-
+# Create Class 'Papy', grouping OpenJson, Parser, randomChat, and StatusParser
 def openjson(path):
     """Json file reader, returning it's content in pure form."""
     with open(path, 'r') as f:
@@ -27,7 +27,48 @@ def parser(msg:str):
     return " ".join(msg_set.difference(ignore_set))
 
 
-def randomchat(lstmsg:list):
+def randomchat(lstmsg:list, status):
     """Randomly return a string item from a list of strings."""
+        # def statusParser():
+        """Get a status from the status tracker, returns a list accordingly"""
+        # Fails = 0; msg = 1; Greating = 2
+            # if status is 0:
+            #   use fails message
+            # elif status is 1:
+            #   Use msg
+            # else :
+            #   use Greetings
+    # if status is 0:
+    #   use fails message
+    # elif status is 1:
+    #   Use msg
+    # else :
+    #   use Greetings
     return random.choice(lstmsg)
 
+
+    # def StatusTracker():
+
+# Create class 'Search engine' or 'API'
+    # def wikisearch(searchObject):
+    '''Given a string remotely search in wiki what's needed'''
+    # Try:
+        # from wikipedia import summary, page, set_lang
+        # First set langue to french with: wikipedia.set_lang("fr")
+        # stock search variable in a var 'city' or called 'seachObject'
+        # summary(city, sentences=2)
+        # page(city).url
+            ## NB: No Way around it.
+            # The function wikipedia.page().content cannot split a summary of n sentences
+            # And Summary cannot give the url
+    # Except:
+        # Change status to Fails
+        # If "wikipedia.exceptions.DisambiguationError" Possibly invit user to precise his query? e.g. (test lang:en)"roma"
+            # return '\nMerci de redéfinir la question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : ' wikipedia.search(searchObjet)
+
+    # def GoogleMap(searchObject):
+        # given a string returns a Gmap in URL ready to use
+        # Try:
+            # Get Gmap API result
+        # Except:
+            # Change status to Fails
