@@ -17,6 +17,8 @@
     <title>Papy Bot !</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
+
+
 </head>
 
 <body>
@@ -73,6 +75,19 @@
             </div>
         </fieldset>
     </form>
+
+
+    <div id="googleMap" style="width:80%;height:400px;"></div>
+    <script>
+    function myMap() {
+    var mapProp= {
+      center:new google.maps.LatLng(51.508742,-0.120850),
+      zoom:5,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 
 
     <footer class="footer fixed-bottom flex-shrink-0 py-4 bg-dark text-white-50">
