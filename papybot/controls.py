@@ -30,7 +30,7 @@ def parser(msg:str):
 def randomchat(lstmsg:list, status):
     """Randomly return a string item from a list of strings."""
         # def statusParser():
-        """Get a status from the status tracker, returns a list accordingly"""
+        # """Get a status from the status tracker, returns a list accordingly"""
         # Fails = 0; msg = 1; Greating = 2
             # if status is 0:
             #   use fails message
@@ -65,6 +65,25 @@ def randomchat(lstmsg:list, status):
         # Change status to Fails
         # If "wikipedia.exceptions.DisambiguationError" Possibly invit user to precise his query? e.g. (test lang:en)"roma"
             # return '\nMerci de redéfinir la question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : ' wikipedia.search(searchObjet)
+
+
+class Api(object):
+    """Managing in Api all API related requests"""
+
+
+    def wikipedia(request: str):
+        """
+        Given a String request, this function will fetch a wikipedia summary,
+        and URL string.
+        If not found, or exception raised, an error message will be displaid.
+        """
+        try:
+            return f'{wikipedia.summary(request)} \
+            \n\n {wikipedia.page(request).url}'
+        except:
+            return f'\nMerci de redéfinir la question, plus précisément. \
+(e.g. Ajoute un pays)\nJe te propose : {i for i in wikipedia.search(request)}'
+
 
     # def GoogleMap(searchObject):
         # given a string returns a Gmap in URL ready to use

@@ -1,6 +1,7 @@
 config.py
 PapyBot_P7.sublime-project
 PapyBot_P7.sublime-workspace
+htest.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
