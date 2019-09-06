@@ -76,18 +76,14 @@
         </fieldset>
     </form>
 
-
-    <div id="googleMap" style="width:80%;height:400px;"></div>
-    <script>
-    function myMap() {
-    var mapProp= {
-      center:new google.maps.LatLng(51.508742,-0.120850),
-      zoom:5,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+    <!-- Embeded API Gmap from search Query -->
+    <iframe
+      width="450"
+      height="250"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/search?key=API_KEY_HEREq=Roma+Queensland"
+      allowfullscreen>
+    </iframe>
 
 
     <footer class="footer fixed-bottom flex-shrink-0 py-4 bg-dark text-white-50">

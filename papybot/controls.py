@@ -87,9 +87,6 @@ class Api(object):
             return f"Merci de redéfinir ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"
 
 
-    # def GoogleMap(searchObject):
-        # given a string returns a Gmap in URL ready to use
-        # Try:
-            # Get Gmap API result
-        # Except:
-            # Change status to Fails
+    def gmap_key(request, key_id, path='config.json'):
+        """Provides the API link with APIKey, as a String"""
+        return f"https://www.google.com/maps/embed/v1/search?key={Papy.openjson(path)[key_id]}&q={'+'.join(request.split())}"

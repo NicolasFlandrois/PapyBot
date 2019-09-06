@@ -23,5 +23,7 @@ def test_wikipedia():
     assert Api.wikipedia('french_republican_date') == "The French Republican calendar (French: calendrier républicain français), also commonly called the French Revolutionary calendar (calendrier révolutionnaire français), was a calendar created and implemented during the French Revolution, and used by the French government for about 12 years from late 1793 to 1805, and for 18 days by the Paris Commune in 1871. The revolutionary system was designed in part to remove all religious and royalist influences from the calendar, and was part of a larger attempt at decimalisation in France (which also included decimal time of day, decimalisation of currency, and metrication). It was used in government records in France and other areas under French rule, including Belgium, Luxembourg, and parts of the Netherlands, Germany, Switzerland, Malta, and Italy.\n\nhttps://en.wikipedia.org/wiki/French_Republican_calendar"
     assert Api.wikipedia('zsecfu') == 'Merci de redéfinir ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : '
 
-# def test_gmap():
-    # assert
+
+def test_gmap_key():
+    assert Api.gmap_key("London", "testkey", "config.json") == "https://www.google.com/maps/embed/v1/search?key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR&q=London"
+    assert Api.gmap_key("Roma Queensland", "testkey", "config.json") == "https://www.google.com/maps/embed/v1/search?key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR&q=Roma+Queensland"
