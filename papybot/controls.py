@@ -5,10 +5,11 @@
 
 import json
 import random
+import requests
 import wikipedia
 
 
-class Papy(object):
+class Papy:
     """Papy, grouping OpenJson, Parser, randomChat, and StatusParser"""
 
     def openjson(path):
@@ -71,7 +72,7 @@ class Papy(object):
                 # return '\nMerci de redéfinir la question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : ' wikipedia.search(searchObjet)
 
 
-class Api(object):
+class Api:
     """Managing in Api all API related requests"""
 
 
@@ -87,6 +88,7 @@ class Api(object):
             return f"Merci de redéfinir ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"
 
 
+    @staticmethod
     def gmap_key(request, key_id, path='config.json'):
         """Provides the API link with APIKey, as a String"""
         return f"https://www.google.com/maps/embed/v1/search?key={Papy.openjson(path)[key_id]}&q={'+'.join(request.split())}"
