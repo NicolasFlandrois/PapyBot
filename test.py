@@ -4,6 +4,8 @@ from papybot.views import *
 from server import *
 import json
 
+# How to do unit test on Flask > server.py?
+
 
 def test_openjson():
     assert type(Papy.openjson('./papybot/data.json')) == dict
