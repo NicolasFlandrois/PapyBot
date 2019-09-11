@@ -10,9 +10,9 @@ import wikipedia
 
 
 class Papy:
-    """Papy, grouping OpenJson, Parser, randomChat, and StatusParser"""
+    """Papy, grouping get_json, Parser, randomChat, and StatusParser"""
 
-    def openjson(path):
+    def get_json(path):
         """Json file reader, returning it's content in pure form."""
         with open(path, 'r') as f:
             text = json.load(f)
@@ -25,7 +25,7 @@ class Papy:
         and then
         """
 
-        ignore_set = set(Papy.openjson(path)["parser"])
+        ignore_set = set(Papy.get_json(path)["parser"])
         msg_set =  set(msg.lower().replace(".", "").replace(",", "").replace("?", "")
                     .replace(";", "").replace(":", "").replace("!", "").split())
 
@@ -91,4 +91,4 @@ class Api:
     @staticmethod
     def gmap_key(request, key_id, path='config.json'):
         """Provides the API link with APIKey, as a String"""
-        return f"https://www.google.com/maps/embed/v1/search?key={Papy.openjson(path)[key_id]}&q={'+'.join(request.split())}"
+        return f"https://www.google.com/maps/embed/v1/search?key={Papy.get_json(path)[key_id]}&q={'+'.join(request.split())}"
