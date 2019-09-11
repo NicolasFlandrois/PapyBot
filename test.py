@@ -15,16 +15,20 @@ def test_get_json():
     assert type(Papy.get_json('./papybot/data.json')) == dict
 
 
-def test_mock_get_json(mock_response):
+def test_mock_get_json(monkeypatch, tmpdir):
     results = {"mock_key":"mock_response"}
 
     def mockreturn(request):
-        return BytesIO(json.dumps(results).encode())
+        return BytesIO(json.dumps(results, sort_keys=True, indent=4,
+                                  separators=(',', ': ')).encode())
 
     monkeypatch.setattr(urllib.request, 'urlopen', mockreturn)
 
     p = tmpdir.mkdir('mocktest').join('test.json')
-# Popuate the fictional json file e.g.> script.main(["--dest", str(p), "--count", "1"])
+
+    with open(p, 'w') as out_f:
+        out_f.write('{"mock_key":"mock_response"}')
+
     local_res = json.load(open(p))
 
     assert local_res == Papy.get_json(p)
