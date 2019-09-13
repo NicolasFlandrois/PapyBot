@@ -12,6 +12,7 @@ import wikipedia
 class Papy:
     """Papy, grouping get_json, Parser, randomChat, and StatusParser"""
 
+    @staticmethod
     def get_json(path):
         """Json file reader, returning it's content in pure form."""
         with open(path, 'r') as f:
@@ -19,6 +20,7 @@ class Papy:
         return text
 
 
+    @staticmethod
     def parser(msg:str, path):
         """
         Given a string, this function will split the string into a set of words,
@@ -32,6 +34,7 @@ class Papy:
         return " ".join(msg_set.difference(ignore_set)).capitalize()
 
 
+    @staticmethod
     def randomchat(lstmsg:list, status):
         """Randomly return a string item from a list of strings."""
             # def statusParser():
@@ -55,6 +58,7 @@ class Papy:
         # def StatusTracker():
 
 
+    @staticmethod
     def wikipedia(request: str):
         """
         Given a String request, this function will fetch a wikipedia summary,
