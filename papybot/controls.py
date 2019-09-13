@@ -54,27 +54,6 @@ class Papy:
 
         # def StatusTracker():
 
-    # Create class 'Search engine' or 'API'
-        # def wikisearch(searchObject):
-        '''Given a string remotely search in wiki what's needed'''
-        # Try:
-            # from wikipedia import summary, page, set_lang
-            # First set langue to french with: wikipedia.set_lang("fr")
-            # stock search variable in a var 'city' or called 'seachObject'
-            # summary(city, sentences=2)
-            # page(city).url
-                ## NB: No Way around it.
-                # The function wikipedia.page().content cannot split a summary of n sentences
-                # And Summary cannot give the url
-        # Except:
-            # Change status to Fails
-            # If "wikipedia.exceptions.DisambiguationError" Possibly invit user to precise his query? e.g. (test lang:en)"roma"
-                # return '\nMerci de redéfinir la question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : ' wikipedia.search(searchObjet)
-
-
-class Api:
-    """Managing in Api all API related requests"""
-
 
     def wikipedia(request: str):
         """
@@ -86,9 +65,3 @@ class Api:
             return f'{wikipedia.summary(request)}\n\n{wikipedia.page(request).url}'
         except:
             return f"Merci de redéfinir ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"
-
-
-    @staticmethod
-    def gmap_key(request, key_id, path='config.json'):
-        """Provides the API link with APIKey, as a String"""
-        return f"https://www.google.com/maps/embed/v1/search?key={Papy.get_json(path)[key_id]}&q={'+'.join(request.split())}"
