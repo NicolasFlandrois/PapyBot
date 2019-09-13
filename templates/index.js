@@ -1,5 +1,5 @@
 // Author : Nicolas Flandrois
-// Date : Thu 15 Aug 2019 18:51:34 CEST
+// Date : Thu 15 Aug 2019 18:51:34  CEST
 // Javascript & Ajax & Jquery
 
 // Get question request from HTML (AJAX/JQuery)

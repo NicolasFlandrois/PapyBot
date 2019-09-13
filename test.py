@@ -6,7 +6,7 @@ import pytest
 from server import *
 import urllib.request
 
-# How to do unit test on Flask > server.py?
+# How to do unit test on Flask > server.py ?
 
 
 def test_get_json():
