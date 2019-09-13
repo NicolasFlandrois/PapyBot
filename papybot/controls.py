@@ -35,27 +35,24 @@ class Papy:
 
 
     @staticmethod
-    def randomchat(lstmsg:list, status):
-        """Randomly return a string item from a list of strings."""
-            # def statusParser():
-            # """Get a status from the status tracker, returns a list accordingly"""
-            # Fails = 0; msg = 1; Greating = 2
-                # if status is 0:
-                #   use fails message
-                # elif status is 1:
-                #   Use msg
-                # else :
-                #   use Greetings
-        # if status is 0:
-        #   use fails message
-        # elif status is 1:
-        #   Use msg
-        # else :
-        #   use Greetings
+    def randomchat(status, path):
+        """
+        Randomly return a string item from a list of strings.
+        Get a status from the status tracker, returns a list accordingly.
+        Fails = 0; msg = 1; Greating = 2
+        """
+        if status is 0:
+            # Status == fails
+            lstmsg = Papy.get_json(path)["fails"]
+        elif status is 1:
+            # Status == Success
+            lstmsg = Papy.get_json(path)["msg"]
+        else :
+            # Status == Greetings
+            lstmsg = Papy.get_json(path)["greetings"]
+
         return random.choice(lstmsg)
 
-
-        # def StatusTracker():
 
 
     @staticmethod
@@ -64,8 +61,11 @@ class Papy:
         Given a String request, this function will fetch a wikipedia summary,
         and URL string.
         If not found, or exception raised, an error message will be displaid.
+        In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return f'{wikipedia.summary(request)}\n\n{wikipedia.page(request).url}'
+            return {'status':1, 'msg':f'{wikipedia.summary(request)}\n\n\
+{wikipedia.page(request).url}'}
         except:
-            return f"Merci de redéfinir ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"
+            return {'status':0, 'msg':f"Merci de redéfinir ta question, plus \
+précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"}
