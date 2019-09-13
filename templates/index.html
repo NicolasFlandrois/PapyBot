@@ -1,6 +1,6 @@
 <!-- Author : Nicolas Flandrois -->
 <!-- Date : Thu 15 Aug 2019 18:51:34 CEST -->
-<!-- HTML User Interface page, including CSS style in Bootstrap  features -->
+<!-- HTML User Interface page, including CSS style in Bootstrap features -->
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,7 +17,10 @@
     <title>Papy Bot !</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
-
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
 
 </head>
 
@@ -54,51 +57,16 @@
         <!-- Text Dialog Box -->
         <!-- Size fitting = ~ 50% of the page margin/padding included for All screen size but sm and xs which fits 100% -->
         <div id="dialogbox" class="m-0 m-md-2  mx-auto">Text Dialog Here</div>
-        <!-- https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp -->
-
-        <!-- Map Display Box -->
-        <!-- Size fitting = ~ 50% of the page margin/padding included for All screen size but sm and xs which fits 100% -->
-        <div id="mapbox" class="m-0 m-md-2  mx-auto">Map Here</div>
+        <!-- https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp OR Use Spyscroll in Bootstrap-->
     </div>
 
 
-    <!-- Form to input question -->
-    <!-- Align center those input forms -->
-    <form id="shoutform" class="form-horizontal" autocomplete="off">
-        <fieldset class="w-100 d-flex align-content-center">
-            <div class="col col-2">
-                <input id="user_post" name="user_post" required="required"
-                         class="form-control " placeholder="Entrez votre message" type="text">
-            </div>
-            <div class="col col-3">
-                <input type="submit" id="go" class="form-control" value="Envoyer">
-            </div>
-        </fieldset>
-    </form>
-
-    <!-- Embeded API Gmap from search Query -->
-    <iframe
-      width="450"
-      height="250"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBwaRMmEGzrBhnnOjDoeXQOBr_iCRt26hw&q=London"
-
-      allowfullscreen>
-    </iframe>
-
-    <div id="googleMap" style="width:100%;height:400px;"></div>
-
-    <script>
-    function myMap() {
-    var mapProp= {
-      center:new google.maps.LatLng(51.508742,-0.120850),
-      zoom:5,
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+        <!-- Form to input question -->
+        <!-- Align center those input forms -->
+        <form class="form-inline">
+            <input id="user_post" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
+            <button id="submit_btn" type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
 
 
     <footer class="footer fixed-bottom flex-shrink-0 py-4 bg-dark text-white-50">
@@ -119,8 +87,7 @@
     </footer>
 
     <!-- Bootstrap CND Jquery, Popper, JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/index.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>

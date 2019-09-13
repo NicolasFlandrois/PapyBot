@@ -1,3 +1,8 @@
+#!/usr/bin/python3.7
+# UTF8
+# Date: Fri 30 Aug 2019 21:46:04 CEST
+# Author: Nicolas Flandrois
+
 from io import BytesIO
 import json
 from papybot.controls import *
@@ -6,7 +11,7 @@ import pytest
 from server import *
 import urllib.request
 
-# How to do unit test on Flask > server.py ?
+# How to do unit test on Flask > server.py?
 
 
 def test_get_json():
