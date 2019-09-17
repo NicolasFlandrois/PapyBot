@@ -52,50 +52,42 @@
     </header>
 
 
-    <main class="bd-content d-flex mr-3" role="main">
-        <div class="container-fluid">
-            <div class="row-fluid justify-content-center">
-                <!-- Dialog Box -->
-                <div id="dialogBox" class="container-fluid d-flex">
-                    <!-- Text Dialog Box -->
-                    <div id="papySide" class="col-xl-6 col-lg-6 col-md-9 col-sm-12">
-                        <p class='d-flex justify-content-center p-2 float-left rounded-pill border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-white mr-6'>
-                            Papy Side
-                        </p>
-                        <p class='d-flex justify-content-center p-2 float-left rounded-pill border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-white mr-6'>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                    <div id="userSide" class="col-xl-6 col-lg-6 col-md-9 col-sm-12">
-                        <p class='d-flex justify-content-center p-2 float-left rounded-pill border-left border-bottom border-secondary shadow-sm bg-success align-middle text-white mr-6'>
-                            User Side
-                        </p>
-                        <p class='d-flex justify-content-center p-2 float-left rounded-pill border-left border-bottom border-secondary shadow-sm bg-success align-middle text-white mr-6'>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    <main class="bd-content" role="main">
+        <div id="dialogBox" class="container col">
+            <!-- Text Dialog Box -->
 
-            <div class="row-fluid">
-                <!-- Form to input question -->
-                <form id="user_form" class="form-inline d-flex justify-content-center">
-                    <input id="user_post" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
-                    <button id="submit_btn" type="submit" class="btn btn-primary mb-2">Valider</button>
-                </form>
-            </div>
+                <p class='col-7 d-flex justify-content-center p-3 float-left rounded-pill border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-white mr-3'>
+                    Papy Side
+                </p>
+                <p class='col-7 d-flex justify-content-center p-3 float-right rounded-pill border-left border-bottom border-secondary shadow-sm bg-success align-middle text-white mr-3'>
+                    User Side
+                </p>
+                <p class='col-7 d-flex justify-content-center p-3 float-left rounded-pill border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-white mr-3'>
+                    PAPY Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p class='col-7 d-flex justify-content-center p-3 float-right rounded-pill border-left border-bottom border-secondary shadow-sm bg-success align-middle text-white mr-3'>
+                    USER Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
         </div>
     </main>
+
+    <div class="container-fluid d-flex justify-content-center p-2 mr-3">
+        <!-- Form to input question -->
+        <form id="user_form" class="form-inline">
+            <input id="user_post" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
+            <button id="submit_btn" type="submit" class="btn btn-primary mb-2">Envoyer</button>
+        </form>
+    </div>
 
 
     <footer class="footer fixed-bottom flex-shrink-0 py-4 bg-dark text-white-50" style="width: 100%; height: 9rem;">
@@ -115,7 +107,7 @@
         </div>
     </footer>
 
-    <!-- Bootstrap CND Jquery, Popper, JS -->
+    <!-- Bootstrap CND JS -->
     <script type="text/javascript" src="static/index.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
