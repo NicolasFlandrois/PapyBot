@@ -11,6 +11,8 @@
 
 // Post Responce to HTML > Use a look like a text messenger round shape & distinguish Human (User) from PapyBot (Computer) (AJAX/JQuery)
 
+// Use Bootstrap Float right or left for each messenger exchanges cf https://getbootstrap.com/docs/4.2/utilities/float/
+// Use Bootstrap Borders to encapsulate messengers cf https://getbootstrap.com/docs/4.2/utilities/borders/
 $(()=> {
     $("#user_post").on("#submit_btn", ()=> {
         let el = $("#user_post");
