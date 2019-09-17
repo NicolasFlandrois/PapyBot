@@ -21,7 +21,8 @@ def msg(msg):
     # Get controls Reply: Sucess/Failure + Reply message & Send to JS to display
     # IF Previous step == success Get parsed message, & send to Gmap API in JS, Else None
 
-    return json.dumps(output)#return json file... to transmit to client cf how I did it in tests
+    # return json.dumps(output)#return json file... to transmit to client cf how I did it in tests
+    return json.dumps({'Hello World'})    # Test Dev
 
 
 if __name__ == "__main__":
