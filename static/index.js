@@ -9,16 +9,16 @@ $(()=> {
 
         let el1 = "<p col-7 d-flex justify-content-center p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white mr-auto'>" + el1 + "</p>";
         console.log(el1);
-        question = $("#userSide");
-        question.html("");
-        question.append(el1);
+        request = $("#dialogBox");
+        request.html("");
+        request.append(el1);
 
         // Post question request to Python Flask Server (AJAX/JQuery)
         let url = "http://127.0.0.1:5000/message/" + el1.val() + "/";
         // Get Responce from Python Flask Server (AJAX/JQuery)
         $.get(url, (res)=> {
             let words = JSON.parse(res);
-            let results = $("#papySide");
+            let results = $("#dialogBox");
             results.html("");
             // Do sthg here
             // Here goes :     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
