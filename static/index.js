@@ -18,3 +18,9 @@ $.ajax({
             console.log(response);
         }
 });
+
+$.get(`${window.origin}/message`, {category:'client', type:'premium'})
+     .done(function(response) {
+           alert("success");
+           $("#mypar").html(response.amount);
+     });
