@@ -21,6 +21,11 @@ $.ajax({
 
 $.get(`${window.origin}/message`, {category:'client', type:'premium'})
      .done(function(response) {
-           alert("success");
-           $("#mypar").html(response.amount);
+           $("#dialogBox").html(response.amount);
      });
+
+// User Resquest should be incoporate/interpolate in:
+// "<p col-7 d-flex justify-content-center p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white mr-auto'>" + el1 + "</p>";
+
+// PapyBot Response should be incorporate/interpolate in:
+// "<p class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + words + "</p>"
