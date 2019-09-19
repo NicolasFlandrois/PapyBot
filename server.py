@@ -24,13 +24,10 @@ def index():
 #     # return json.dumps(output)#return json file... to transmit to client cf how I did it in tests
 #     return json.dumps({'Hello World'})    # Test Dev
 
-@app.route('/message', methods=['POST', 'GET'])
-def create_entry():
-    if request.method=='GET':
-        var = request.get_data()
-        return jsonify({'res':'Hello World'})
-    elif request.method=='POST':
-        return 'Not Get Method - USE GET Method'
+@app.route('/message/<message>/')
+def create_entry(message):
+        # Do sthg
+    return jsonify({'res':'Hello World'})
 
 if __name__ == "__main__":
     app.run(debug=True)
