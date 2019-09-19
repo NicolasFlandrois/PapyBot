@@ -15,19 +15,12 @@ def index():
     return render_template('index.html')
 
 
-# @app.route('/message/<msg>')
-# def msg(msg):
-#     # Get request/input from HTML/JS form & send to/use controls.py
-#     # Get controls Reply: Sucess/Failure + Reply message & Send to JS to display
-#     # IF Previous step == success Get parsed message, & send to Gmap API in JS, Else None
-
-#     # return json.dumps(output)#return json file... to transmit to client cf how I did it in tests
-#     return json.dumps({'Hello World'})    # Test Dev
-
-@app.route('/message/<message>/')
-def create_entry(message):
+@app.route('/message/<string:msg>/')
+def create_entry(msg):
         # Do sthg
-    return jsonify({'res':'Hello World'})
+    print('Pouloulou')
+    return 'Hello World'
+
 
 if __name__ == "__main__":
     app.run(debug=True)
