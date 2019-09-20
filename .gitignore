@@ -2,6 +2,7 @@ config.json
 PapyBot_P7.sublime-project
 PapyBot_P7.sublime-workspace
 htest.py
+Pix_Issue_Display
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
