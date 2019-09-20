@@ -15,7 +15,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/msg/<string:msg>')
+@app.route('/msg/<string:msg>', methods=['GET'])
 def msg(msg):
     # msg = request.form['user_request']
         # Do sthg
