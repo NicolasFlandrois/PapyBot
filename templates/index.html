@@ -54,23 +54,26 @@
 
 
     <main class="bd-content" role="main">
-        <div id="dialogBox" class="container p-5 col">
+        <div id="dialogBox" class="container p-5 col" style="margin-bottom:150px">
             <!-- Text Dialog Box -->
 
         </div>
     </main>
 
-    <div class="container-fluid d-flex justify-content-center p-2 mr-3" style="margin-bottom:150px">
+
+
+
+    <footer class="footer fixed-bottom flex-shrink-0 p-1 bg-dark text-white-50" style="width: 100%; height: auto;">
+
         <!-- Form to input question -->
-        <form id="user_form" class="form-inline" action="{{ url_for('msg') }}" method="POST">
-            <input id="user_request" name="user_request" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
-            <button id="submit_btn" name="submit" type="submit" class="btn btn-primary mb-2">Envoyer</button>
-        </form>
-    </div>
+        <div class="container-fluid d-flex justify-content-center p-2 mr-3" > <!-- style="margin-bottom:150px" -->
+            <form id="user_form" class="form-inline">
+                <input id="user_request" name="user_request" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
+                <button id="submit_btn" name="submit" type="submit" class="btn btn-primary mb-2">Envoyer</button>
+            </form>
+        </div>
 
-
-
-    <footer class="footer fixed-bottom flex-shrink-0 p-1 bg-dark text-white-50" style="width: 100%; height: 9rem;">
+        <!-- Footers -->
         <div class="d-flex footer_block">
             <div class="footer_icon m-3 mx-auto">
                 <a href="https://github.com/NicolasFlandrois" title="Github" target="_blank"><img src="{{ url_for('static', filename='github.png')}}" width="50" height="50" class="icon_ft" alt="Github" /></a>
