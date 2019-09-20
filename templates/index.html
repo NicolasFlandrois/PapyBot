@@ -62,9 +62,9 @@
 
     <div class="container-fluid d-flex justify-content-center p-2 mr-3" style="margin-bottom:150px">
         <!-- Form to input question -->
-        <form id="user_form" class="form-inline">
-            <input id="user_request" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
-            <button id="submit_btn" type="submit" onclick="submit_message();" class="btn btn-primary mb-2">Envoyer</button>
+        <form id="user_form" class="form-inline" action="{{ url_for('msg') }}" method="POST">
+            <input id="user_request" name="user_request" type="text" class="form-control mb-2 mr-sm-2" placeholder="Entrez votre message" required="required">
+            <button id="submit_btn" name="submit" type="submit" class="btn btn-primary mb-2">Envoyer</button>
         </form>
     </div>
 

@@ -3,7 +3,7 @@
 # Date: Fri 16 Aug 2019 15:39:17 CEST
 # Author: Nicolas Flandrois
 
-from flask import Flask, render_template, request, jsonify, make_response
+from flask import Flask, render_template, request, jsonify, url_for
 import json
 
 
@@ -15,11 +15,15 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/message/<string:msg>/')
-def create_entry(msg):
+@app.route('/msg' , methods=['POST'])
+def msg():
+    msg = request.form['user_request']
         # Do sthg
+    print('request: ', type(request.form))
+    print('msg: ', type(msg))
     print('Pouloulou')
-    return 'Hello World'
+    send = {'msg':f'Hello World {msg}'}
+    return jsonify(send)
 
 
 if __name__ == "__main__":
