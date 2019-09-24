@@ -17,12 +17,11 @@ $( "form" ).on( "submit", function( event ) {
     console.log(req);  // Returns a console.log = "user_request=Hello%20world"
 
 
-    reqstr = "<p>" + req + "</p>";
+    reqstr = JSON.parse(req)
     console.log(reqstr);  //Returns a Console.log = <p>"user_request=Hello%20world"</p>
 
-    $( "reqstr" ).appendTo( "#dialogBox" );
+    $( "reqstr" ).appendTo( "" );
+    $( "#dialogBox" ).text( "<p>" + req.user_request + "</p>" );
 
-  // let myJSON = JSON.stringify($( req ).serialize());
-  // console.log( $( this ).serialize() );
 
 });
