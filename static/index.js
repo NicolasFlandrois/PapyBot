@@ -13,6 +13,10 @@
 
 $( "form" ).on( "submit", function( event ) {
   event.preventDefault();
-  let myJSON = JSON.stringify($( this ).serialize());
+  let req = $( this );
+  console.log(req);
+  $( "#dialogBox" ).text( "<p> test </p>" );
+
+  let myJSON = JSON.stringify($( req ).serialize());
   console.log( $( this ).serialize() );
 });
