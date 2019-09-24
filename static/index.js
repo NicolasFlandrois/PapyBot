@@ -12,11 +12,17 @@
 
 
 $( "form" ).on( "submit", function( event ) {
-  event.preventDefault();
-  let req = $( this );
-  console.log(req);
-  $( "#dialogBox" ).text( "<p> test </p>" );
+    event.preventDefault();
+    let req = JSON.stringify($( this ).serialize());
+    console.log(req);  // Returns a console.log = "user_request=Hello%20world"
 
-  let myJSON = JSON.stringify($( req ).serialize());
-  console.log( $( this ).serialize() );
+
+    reqstr = "<p>" + req + "</p>";
+    console.log(reqstr);  //Returns a Console.log = <p>"user_request=Hello%20world"</p>
+
+    $( "reqstr" ).appendTo( "#dialogBox" );
+
+  // let myJSON = JSON.stringify($( req ).serialize());
+  // console.log( $( this ).serialize() );
+
 });
