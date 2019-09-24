@@ -13,6 +13,7 @@
 
 $( "form" ).on( "submit", function( event ) {
     event.preventDefault();
+
     let req = JSON.stringify($( this ).serialize());
     console.log(req);  // Returns a console.log = "user_request=Hello%20world"
 
@@ -20,8 +21,10 @@ $( "form" ).on( "submit", function( event ) {
     reqstr = JSON.parse(req)
     console.log(reqstr);  //Returns a Console.log = <p>"user_request=Hello%20world"</p>
 
-    $( "reqstr" ).appendTo( "" );
-    $( "#dialogBox" ).text( "<p>" + req.user_request + "</p>" );
+    let container = $("#dialogBox");
+    container.html("");
+    container.append("<p>" + reqstr + "</p>")
+    // Returns 'user_request=Hello%20world' on Browser display, & erased all previous text
 
 
 });
