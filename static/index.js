@@ -29,27 +29,27 @@
 
 // });
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    $('form').on('submit', function(event) {
+//     $('form').on('submit', function(event) {
 
-        event.preventDefault();
+//         event.preventDefault();
 
-        $.ajax({
-            data : {
-                question : $('#userRequest').val()
-            },
-            type : 'POST',
-            url : '/msg'
-        });
+//         $.ajax({
+//             data : {
+//                 question : $('#userRequest').val()
+//             },
+//             type : 'POST',
+//             url : '/msg'
+//         });
 
-        $.done(function(data) {
+//         $.done(function(data) {
 
-            $('#dialogBox').text(data).show();
+//             $('#dialogBox').text(data).show();
 
-        });
+//         });
 
 
-    });
+//     });
 
-});
+// });
