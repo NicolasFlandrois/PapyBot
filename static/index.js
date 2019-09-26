@@ -28,28 +28,3 @@
 
 
 // });
-
-$(document).ready(function() {
-
-    $('form').on('submit', function(event) {
-
-        event.preventDefault();
-
-        $.ajax({
-            data : {
-                question : $('#userRequest').val()
-            },
-            type : 'POST',
-            url : '/msg'
-        });
-
-        $.done(function(data) {
-
-            $('#dialogBox').text(data).show();
-
-        });
-
-
-    });
-
-});
