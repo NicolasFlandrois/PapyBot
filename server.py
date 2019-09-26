@@ -22,8 +22,9 @@ def msg():
     # print('request: ', type(request.form))
     # print('msg: ', type(msg))
     print('Pouloulou')
-    send = {'result':f'Hello World {msg}'}
-    return jsonify(send)
+    # send = {'result':f'Hello World {msg}'}
+    # return jsonify(send)
+    return "Hello World"
 
 
 if __name__ == "__main__":
