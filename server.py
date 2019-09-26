@@ -15,12 +15,12 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/msg/<string:msg>', methods=['GET'])
-def msg(msg):
+@app.route('/msg', methods=['POST'])
+def msg():
     # msg = request.form['user_request']
         # Do sthg
     # print('request: ', type(request.form))
-    print('msg: ', type(msg))
+    # print('msg: ', type(msg))
     print('Pouloulou')
     send = {'result':f'Hello World {msg}'}
     return jsonify(send)
