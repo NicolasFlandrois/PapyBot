@@ -19,20 +19,18 @@ class Papy:
             text = json.load(f)
         return text
 
-
     @staticmethod
-    def parser(msg:str, path):
+    def parser(msg: str, path):
         """
         Given a string, this function will split the string into a set of words,
         and then
         """
 
         ignore_set = set(Papy.get_json(path)["parser"])
-        msg_set =  set(msg.lower().replace(".", "").replace(",", "").replace("?", "")
-                    .replace(";", "").replace(":", "").replace("!", "").split())
+        msg_set = set(msg.lower().replace(".", "").replace(",", "").replace("?", "")
+                      .replace(";", "").replace(":", "").replace("!", "").split())
 
         return " ".join(msg_set.difference(ignore_set)).capitalize()
-
 
     @staticmethod
     def randomchat(status, path):
@@ -47,13 +45,11 @@ class Papy:
         elif status is 1:
             # Status == Success
             lstmsg = Papy.get_json(path)["msg"]
-        else :
+        else:
             # Status == Greetings
             lstmsg = Papy.get_json(path)["greetings"]
 
         return random.choice(lstmsg)
-
-
 
     @staticmethod
     def wikipedia(request: str):
@@ -64,8 +60,8 @@ class Papy:
         In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return {'status':1, 'msg':f'{wikipedia.summary(request)}\n\n\
+            return {'status': 1, 'msg': f'{wikipedia.summary(request)}\n\n\
 {wikipedia.page(request).url}'}
         except:
-            return {'status':0, 'msg':f"Merci de redéfinir ta question, plus \
+            return {'status': 0, 'msg': f"Merci de redéfinir ta question, plus \
 précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"}
