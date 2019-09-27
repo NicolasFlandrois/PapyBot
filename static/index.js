@@ -10,46 +10,38 @@
 // PapyBot Response should be incorporate/interpolate in:
 // "<p class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + words + "</p>"
 
+let url = location.origin + '/msg/';
 
-// $( "form" ).on( "submit", function( event ) {
-//     event.preventDefault();
+function renderPapy(res){
+    $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + res + "</p>");
+};
 
-//     let req = JSON.stringify($( this ).serialize());
-//     console.log(req);  // Returns a console.log = "user_request=Hello%20world"
+function rebderUser(req){
+    $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white mr-auto'>" + req + "</p>");
+};
 
-
-//     reqstr = JSON.parse(req)
-//     console.log(reqstr);  //Returns a Console.log = <p>"user_request=Hello%20world"</p>
-
-//     let container = $("#dialogBox");
-//     container.html("");
-//     container.append("<p>" + reqstr + "</p>")
-//     // Returns 'user_request=Hello%20world' on Browser display, & erased all previous text
-
-
-// });
-
-$(document).ready(function() {
-
-    $('form').on('submit', function(event) {
-
-        event.preventDefault();
-
-        $.ajax({
-            data : {
-                question : $('#userRequest').val()
-            },
-            type : 'POST',
-            url : '/msg'
-        });
-
-        $.done(function(data) {
-
-            $('#dialogBox').text(data).show();
-
-        });
-
-
+function getRequest(input){
+    $.get(url+input, null, function(response){
+        console.log(response);
+        rebderUser(input)
+        renderPapy(response)
     });
 
+};
+
+$( "#submit" ).on( "click", function(){
+    let button = $(event.target);
+    let input = button.prev().val();
+    console.log(input);
+    getRequest(input);
 });
+
+$( "input" ).keyup(function(event){
+    if(event.keyCode == 13)
+    {
+        let input = $(event.target).val();
+        console.log(input);
+        getRequest(input);
+    }
+});
+
