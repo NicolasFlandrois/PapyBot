@@ -17,9 +17,7 @@ def index():
 
 @app.route('/msg/<string:msg>', methods=['GET'])
 def msg(msg):
-    # msg = request.form['user_request']
-        # Do sthg
-    # print('request: ', type(request.form))
+    # Do sthg
     print('msg: ', type(msg))
     print('Pouloulou')
     send = {'result': f'Hello World {msg}'}
