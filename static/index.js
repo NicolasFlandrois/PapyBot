@@ -17,7 +17,11 @@ function getRequest(input){
         console.log(input);
         renderUser(input);
         console.log(response);
-        renderPapy(response.res);
+        // Parse in a If Statement HERE. If Error == Not Null, display Error, else Display Successfull message.
+        renderPapy(response.error);
+        renderPapy(response.papy + '<br>' + response.summary);
+        renderPapy('<a href=' +  response.url +  '> Page Wikipedia </a>')
+        renderPapy(response.gmap);
     });
 
 };
@@ -25,7 +29,6 @@ function getRequest(input){
 $( "#submit" ).on( "click", function(){
     let button = $(event.target);
     let input = button.prev().val();
-    console.log(input);
     getRequest(input);
 });
 
@@ -33,7 +36,6 @@ $( "input" ).keyup(function(event){
     if(event.keyCode == 13)
     {
         let input = $(event.target).val();
-        console.log(input);
         getRequest(input);
     }
 });
