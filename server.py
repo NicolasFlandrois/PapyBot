@@ -19,6 +19,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/greetings/')
+def greetings():
+    return Papy.randomchat(2, './papybot/data.json')
+
+
 @app.route('/msg/<string:msg>', methods=['GET'])
 def msg(msg):
     parsed = Papy.parser(msg, "./papybot/data.json")
