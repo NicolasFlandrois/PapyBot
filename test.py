@@ -19,7 +19,7 @@ def test_get_json():
 
 
 def test_mock_get_json(monkeypatch, tmpdir):
-    results = {"mock_key":"mock_response"}
+    results = {"mock_key": "mock_response"}
 
     def mockreturn(request):
         return BytesIO(json.dumps(results, sort_keys=True, indent=4,
@@ -63,9 +63,10 @@ def test_randomchat(monkeypatch, tmpdir):
 
 def test_wikipedia():
     assert type(Papy.wikipedia('London')) == dict
-    assert Papy.wikipedia('french_republican_date') == {'status':1,
-    'msg':'The French Republican \
-calendar (French: calendrier républicain français), also commonly called \
+    assert Papy.wikipedia('french_republican_date') == {'status': 1,
+                                                        'summary': 'The \
+French Republican calendar \
+(French: calendrier républicain français), also commonly called \
 the French Revolutionary calendar (calendrier révolutionnaire français), \
 was a calendar created and implemented during the French Revolution, and \
 used by the French government for about 12 years from late 1793 to 1805, \
@@ -75,17 +76,18 @@ the calendar, and was part of a larger attempt at decimalisation in France \
 (which also included decimal time of day, decimalisation of currency, and \
 metrication). It was used in government records in France and other areas \
 under French rule, including Belgium, Luxembourg, and parts of the \
-Netherlands, Germany, Switzerland, Malta, and Italy.\n\n\
-https://en.wikipedia.org/wiki/French_Republican_calendar'}
-    assert Papy.wikipedia('zsecfu') == {'status':0,
-    'msg':'Merci de redéfinir ta question, plus \
-précisément. (e.g. Ajoute un pays)\nJe te propose : '}
+Netherlands, Germany, Switzerland, Malta, and Italy.',
+                                                        'url': 'https://en.\
+wikipedia.org/wiki/French_Republican_calendar'}
+    assert Papy.wikipedia('zsecfu') == {'status': 0,
+                                        'error': 'Merci de redéfinir \
+ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 
 
 # Mock Testing API
 def test_mock_wikipedia(monkeypatch):
-    res = {'status':1,
-    'msg':'The French Republican \
+    res = {'status': 1,
+           'summary': 'The French Republican \
 calendar (French: calendrier républicain français), also commonly called \
 the French Revolutionary calendar (calendrier révolutionnaire français), \
 was a calendar created and implemented during the French Revolution, and \
@@ -96,8 +98,8 @@ the calendar, and was part of a larger attempt at decimalisation in France \
 (which also included decimal time of day, decimalisation of currency, and \
 metrication). It was used in government records in France and other areas \
 under French rule, including Belgium, Luxembourg, and parts of the \
-Netherlands, Germany, Switzerland, Malta, and Italy.\n\n\
-https://en.wikipedia.org/wiki/French_Republican_calendar'}
+Netherlands, Germany, Switzerland, Malta, and Italy.',
+           'url': 'https://en.wikipedia.org/wiki/French_Republican_calendar'}
 
     def mock_return(request):
         return res
@@ -108,7 +110,7 @@ https://en.wikipedia.org/wiki/French_Republican_calendar'}
 
 
 def test_mock_fails_wikipedia(monkeypatch):
-    res = {'status':0, 'msg':'Merci de redéfinir ta question, \
+    res = {'status': 0, 'error': 'Merci de redéfinir ta question, \
 plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 
     def mock_return(request):

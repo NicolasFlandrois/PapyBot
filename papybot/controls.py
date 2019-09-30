@@ -60,8 +60,8 @@ class Papy:
         In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return {'status': 1, 'msg': f'{wikipedia.summary(request)}\n\n\
-{wikipedia.page(request).url}'}
+            return {'status': 1, 'summary': f'{wikipedia.summary(request)}',
+                    'url': f'{wikipedia.page(request).url}'}
         except:
-            return {'status': 0, 'msg': f"Merci de redéfinir ta question, plus \
+            return {'status': 0, 'error': f"Merci de redéfinir ta question, plus \
 précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"}
