@@ -60,7 +60,7 @@ class Papy:
         In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return {'status': 1, 'summary': f'{wikipedia.summary(request)}',
+            return {'status': 1, 'summary': f'{wikipedia.summary(request, sentences=3)}',
                     'url': f'{wikipedia.page(request).url}'}
         except:
             return {'status': 0, 'error': f"Merci de redéfinir ta question, plus \
