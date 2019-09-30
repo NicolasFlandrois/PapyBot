@@ -17,11 +17,15 @@ function getRequest(input){
         console.log(input);
         renderUser(input);
         console.log(response);
-        // Parse in a If Statement HERE. If Error == Not Null, display Error, else Display Successfull message.
-        renderPapy(response.error);
-        renderPapy(response.papy + '<br>' + response.summary);
-        renderPapy('<a href=' +  response.url +  '> Page Wikipedia </a>')
-        renderPapy(response.gmap);
+
+        if (response.status == 0) {
+            renderPapy(response.papy + '<br>' + response.error);
+        } else {
+            renderPapy(response.papy + '<br>' + response.summary);
+            renderPapy('<a href=' +  response.url +  '> Lien vers sa page Wikipedia </a>');
+            renderPapy(response.gmap);
+        }
+
     });
 
 };
