@@ -20,9 +20,11 @@ def msg(msg):
     # Do sthg
     print('msg: ', type(msg))
     print('Pouloulou')
-    send = {'result': f'Hello World {msg}'}
+    send = {'res': f'Hello World {msg}'}
     print(send)
     return jsonify(send)
+    # return send['res']
+    # return send
 
 
 if __name__ == "__main__":
