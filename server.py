@@ -19,8 +19,9 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/greetings/')
-def greetings():
+@app.route('/greetings/<string:greet>')
+def greetings(greet):
+    print('Hello Greetings World')
     return Papy.randomchat(2, './papybot/data.json')
 
 

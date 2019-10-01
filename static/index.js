@@ -3,6 +3,7 @@
 // Javascript & Ajax & Jquery
 
 let url = location.origin + '/msg/';
+    let url_greet = location.origin + '/greetings/Hello';
 
 function renderUser(res){
     $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + res + "</p>");
@@ -14,10 +15,7 @@ function renderPapy(req){
 
 function getRequest(input){
     $.get(url+input, null, function(response){
-        console.log(input);
         renderUser(input);
-        console.log(response);
-
         if (response.status == 0) {
             renderPapy(response.papy + '<br>' + response.error);
         } else {
@@ -43,4 +41,3 @@ $( "input" ).keyup(function(event){
         getRequest(input);
     }
 });
-
