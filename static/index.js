@@ -30,12 +30,6 @@ function getRequest(input){
 
 };
 
-
-// $.load($.get(url+ '/greetings', null, function(greetings){
-//        renderPapy('greetings');
-//     });
-// );
-
 $( "#submit" ).on( "click", function(){
     let button = $(event.target);
     let input = button.prev().val();
