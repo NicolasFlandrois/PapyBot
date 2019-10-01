@@ -41,3 +41,5 @@ $( "input" ).keyup(function(event){
         getRequest(input);
     }
 });
+
+// The random Greeting will be manage by Flask's jinja in This version
