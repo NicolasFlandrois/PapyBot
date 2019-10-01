@@ -122,3 +122,5 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 
 # NB: Google Map API is Managed by JavaScript.
 # Therefor no unit test mock related to Gmap here.
+
+# Flask Unit Testing
