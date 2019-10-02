@@ -1,5 +1,5 @@
 // Author : Nicolas Flandrois
-// Date : Thu 15 Aug 2019 18:51:34 CEST
+// Date : Wed 02 Oct 2019 16:51:11 CEST
 // Javascript & Ajax & Jquery
 
 let url = location.origin + '/msg/';
