@@ -3,7 +3,6 @@
 // Javascript & Ajax & Jquery
 
 let url = location.origin + '/msg/';
-    let url_greet = location.origin + '/greetings/Hello';
 
 function renderUser(res){
     $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + res + "</p>");
