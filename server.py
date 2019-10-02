@@ -3,9 +3,8 @@
 # Date: Fri 16 Aug 2019 15:39:17 CEST
 # Author: Nicolas Flandrois
 
-from flask import Flask, render_template, request, jsonify, url_for
+from flask import Flask, render_template, jsonify
 from papybot.controls import *
-import json
 import wikipedia
 
 wikipedia.set_lang("fr")
@@ -16,12 +15,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-
-@app.route('/greetings/')
-def greetings():
-    return Papy.randomchat(2, './papybot/data.json')
+    greetings = Papy.randomchat(2, './papybot/data.json')
+    return render_template('index.html', greetings=greetings)
 
 
 @app.route('/msg/<string:msg>', methods=['GET'])
