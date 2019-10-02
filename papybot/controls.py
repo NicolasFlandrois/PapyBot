@@ -68,13 +68,3 @@ class Papy:
             return {'status': 0, 'error': f"Merci de redéfinir ta question, \
 plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
 {', '.join(set([i for i in wikipedia.search(request)]))}"}
-
-    @staticmethod
-    def gmap(request: str, key_path, key_name):
-        """
-        Given a String request, this function will return a string combined with
-        the Gmap API JS Key, and the search extention, All formated to Gmap API
-        specifications.
-        """
-        return f'key={Papy.get_json(key_path)[key_name]}&\
-callback={request.replace(" ", "+")}'

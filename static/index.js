@@ -12,9 +12,7 @@ function renderPapy(req){
     $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white mr-auto'>" + req + "</p>");
 };
 
-function renderGmap(gmap_api_search){
-    $( "#dialogBox" ).append("<script src='https://maps.googleapis.com/maps/api/js?" + gmap_api_search + "'></script>");
-};
+
 
 function getRequest(input){
     $.get(url+input, null, function(response){
