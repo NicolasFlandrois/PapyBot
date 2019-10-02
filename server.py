@@ -16,7 +16,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     greetings = Papy.randomchat(2, './papybot/data.json')
-    print(greetings)
     return render_template('index.html', greetings=greetings)
 
 
