@@ -42,3 +42,10 @@ $( "input" ).keyup(function(event){
 });
 
 // The random Greeting will be manage by Flask's jinja in This version
+
+function bottom() {
+    document.getElementById( 'bottom' ).scrollIntoView();
+    window.setTimeout( function () { top(); }, 2000 );
+};
+
+bottom();
