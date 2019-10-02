@@ -6,10 +6,11 @@
 from io import BytesIO
 import json
 from papybot.controls import *
-from pathlib import Path
-import pytest
 from server import *
 import urllib.request
+import wikipedia
+
+wikipedia.set_lang("fr")
 
 # How to do unit test on Flask > server.py?
 
@@ -63,22 +64,21 @@ def test_randomchat(monkeypatch, tmpdir):
 
 def test_wikipedia():
     assert type(Papy.wikipedia('London')) == dict
-    assert Papy.wikipedia('french_republican_date') == {'status': 1,
-                                                        'summary': 'The \
-French Republican calendar \
-(French: calendrier républicain français), also commonly called \
-the French Revolutionary calendar (calendrier révolutionnaire français), \
-was a calendar created and implemented during the French Revolution, and \
-used by the French government for about 12 years from late 1793 to 1805, \
-and for 18 days by the Paris Commune in 1871. The revolutionary system \
-was designed in part to remove all religious and royalist influences from \
-the calendar, and was part of a larger attempt at decimalisation in France \
-(which also included decimal time of day, decimalisation of currency, and \
-metrication). It was used in government records in France and other areas \
-under French rule, including Belgium, Luxembourg, and parts of the \
-Netherlands, Germany, Switzerland, Malta, and Italy.',
-                                                        'url': 'https://en.\
-wikipedia.org/wiki/French_Republican_calendar'}
+    assert Papy.wikipedia('Kennedy') == {'status': 1,
+    'summary': "John Fitzgerald Kennedy /d͡ʒɑn fɪtsˈd͡ʒɛɹəld ˈkɛnədi/, dit \
+Jack Kennedy, communément appelé John Kennedy et par ses initiales JFK, né le \
+29 mai 1917 à Brookline (Massachusetts) et mort assassiné le 22 novembre 1963 \
+à Dallas (Texas), est un homme d'État américain, 35e président des États-Unis. \
+Entré en poste le 20 janvier 1961, il est, à 43 ans, le plus jeune président \
+élu des États-Unis, et également le plus jeune président à mourir, moins de \
+trois ans après son entrée à la Maison-Blanche, à l'âge de 46 ans.\nIl laisse \
+son empreinte dans l'histoire des États-Unis par sa gestion de la crise des \
+missiles de Cuba, son autorisation du débarquement de la baie des Cochons, \
+son engagement pour le traité d'interdiction partielle des essais nucléaires, \
+le programme Apollo dans le cadre de la course à l'espace, son opposition à \
+la construction du mur de Berlin, sa politique d'égalité des genres et \
+son assassinat.",
+'url': 'https://fr.wikipedia.org/wiki/John_Fitzgerald_Kennedy'}
     assert Papy.wikipedia('zsecfu') == {'status': 0,
                                         'error': 'Merci de redéfinir \
 ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
@@ -87,19 +87,14 @@ ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 # Mock Testing API
 def test_mock_wikipedia(monkeypatch):
     res = {'status': 1,
-           'summary': 'The French Republican \
-calendar (French: calendrier républicain français), also commonly called \
-the French Revolutionary calendar (calendrier révolutionnaire français), \
-was a calendar created and implemented during the French Revolution, and \
-used by the French government for about 12 years from late 1793 to 1805, \
-and for 18 days by the Paris Commune in 1871. The revolutionary system \
-was designed in part to remove all religious and royalist influences from \
-the calendar, and was part of a larger attempt at decimalisation in France \
-(which also included decimal time of day, decimalisation of currency, and \
-metrication). It was used in government records in France and other areas \
-under French rule, including Belgium, Luxembourg, and parts of the \
-Netherlands, Germany, Switzerland, Malta, and Italy.',
-           'url': 'https://en.wikipedia.org/wiki/French_Republican_calendar'}
+           'summary': "James French Hill, né le 5 décembre 1956 à Little Rock, \
+est un homme politique américain, membre du Parti républicain, représentant \
+de l'Arkansas à la Chambre des représentants des États-Unis depuis 2015.\n\n\n\
+== Biographie ==\nFrench Hill est un homme d'affaires millionnaire, exerçant \
+dans le monde de la banque. Dans les années 1980, il travaille auprès de la \
+commission sénatoriale sur la banque, le logement et les affaires urbaines, \
+puis au département du Trésor.",
+           'url': 'https://fr.wikipedia.org/wiki/French_Hill'}
 
     def mock_return(request):
         return res
