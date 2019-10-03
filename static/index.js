@@ -5,11 +5,11 @@
 let url = location.origin + '/msg/';
 
 function renderUser(res){
-    $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + res + "</p>");
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white mr-auto'>" + res + "</div>");
 };
 
 function renderPapy(req){
-    $( "#dialogBox" ).append("<p class='col-7 d-flex justify-content-center p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white mr-auto'>" + req + "</p>");
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white mr-auto'>" + req + "</div>");
 };
 
 
@@ -22,7 +22,8 @@ function getRequest(input){
         } else {
             renderPapy(response.papy + '<br>' + response.summary);
             renderPapy('<a class="text-white" target="_blank" href=' +  response.url +  '> Lien vers sa page Wikipedia </a>');
-            renderGmap(response.gmap);
+            let gmap = "<img src='https://maps.googleapis.com/maps/api/staticmap?center=" + response.gmap_search + "&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C" + response.gmap_search + "&key=" + response.gmap_key + "'>";
+            renderPapy(gmap);
         }
 
     });

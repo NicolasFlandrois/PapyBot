@@ -61,10 +61,19 @@ class Papy:
         In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return {'status': 1, 'summary': {wikipedia.summary(request,
-                                                               sentences=3)},
-                    'url': {wikipedia.page(request).url}}
+            return {'status': 1, 'summary': wikipedia.summary(request,
+                                                              sentences=3),
+                    'url': wikipedia.page(request).url}
         except:
             return {'status': 0, 'error': f"Merci de redéfinir ta question, \
 plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
 {', '.join(set([i for i in wikipedia.search(request)]))}"}
+
+    @staticmethod
+    def gmap(request: str, key_path, key_name):
+        """
+        Given a String request, this function will return a string combined with
+        the Gmap API JS Key, and the search extention, All formated to Gmap API
+        specifications.
+        """
+        return Papy.get_json(key_path)[key_name]
