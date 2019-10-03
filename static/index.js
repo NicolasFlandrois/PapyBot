@@ -22,9 +22,11 @@ function getRequest(input){
         if (response.status == 0) {
             renderPapy(response.papy + '<br>' + response.error);
         } else {
+            console.log(response);
+            console.log(response.gmap);
             renderPapy(response.papy + '<br>' + response.summary);
             renderPapy('<a class="text-white" target="_blank" href=' +  response.url +  '> Lien vers sa page Wikipedia </a>');
-            renderGmap(response.gmap);
+            renderPapy(response.gmap);
         }
 
     });
