@@ -61,9 +61,9 @@ class Papy:
         In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return {'status': 1, 'summary': {wikipedia.summary(request,
-                                                               sentences=3)},
-                    'url': {wikipedia.page(request).url}}
+            return {'status': 1, 'summary': wikipedia.summary(request,
+                                                              sentences=3),
+                    'url': wikipedia.page(request).url}
         except:
             return {'status': 0, 'error': f"Merci de redéfinir ta question, \
 plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
