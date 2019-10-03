@@ -76,5 +76,4 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
         the Gmap API JS Key, and the search extention, All formated to Gmap API
         specifications.
         """
-        return f'key={Papy.get_json(key_path)[key_name]}&\
-callback={request.replace(" ", "+")}'
+        return Papy.get_json(key_path)[key_name]
