@@ -24,19 +24,17 @@ def msg(msg):
     parsed = Papy.parser(msg, "./papybot/data.json")
     wiki = Papy.wikipedia(parsed)
     papyChat = Papy.randomchat(wiki['status'], './papybot/data.json')
-    gmap_key = Papy.gmap(parsed, 'config.json', 'Gmapkey')
-    gmap_search = '+'.join(parsed.split())
+    gmap = Papy.gmap(parsed, 'config.json', 'Gmapkey')
 
     if wiki['status'] is 1:
         send = {'status': wiki['status'], 'papy': papyChat,
                 'summary': wiki['summary'],
-                'url': wiki['url'], 'gmap_key': gmap_key,
-                'gmap_search': gmap_search}
+                'url': wiki['url'], 'gmap': gmap}
     else:
         send = {'status': wiki['status'], 'papy': papyChat,
                 'error': wiki['error']}
 
-    print('send: ', type(send), send)
+    print(gmap)
     return jsonify(send)
 
 
