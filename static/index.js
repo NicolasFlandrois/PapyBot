@@ -23,13 +23,18 @@ function getRequest(input){
             renderPapy(response.papy + '<br>' + response.summary);
             renderPapy('<a class="text-white" target="_blank" href=' +  response.url +  '> Lien vers sa page Wikipedia </a>');
 
-            if (response.map != "Staticmap-API-Warning Error geocoding"){
-                let gmap = "<img src=" + response.gmap + ">";
-                console.log(gmap);
-                renderPapy(gmap);
-                console.log(response.map);
-            } else {
-                console.log(response.map);
+            try{
+                if (response.map != "Staticmap-API-Warning Error geocoding"){
+                    let gmap = "<img src=" + response.gmap + ">";
+                    console.log(gmap);
+                    renderPapy(gmap);
+                    console.log(response.map);
+                } else {
+                    console.log(response.map);
+                }
+            }
+            catch(err){
+                console.log(err)
             }
 
         }
