@@ -76,4 +76,15 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
         the Gmap API JS Key, and the search extention, All formated to Gmap API
         specifications.
         """
-        return Papy.get_json(key_path)[key_name]
+        search = '+'.join(request.split())
+        source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={Papy.get_json(key_path)[key_name]}"
+        print(source)
+        try:
+            res = requests.get(source)
+            if res.headers['X-Staticmap-API-Warning'] == 'Error geocoding: center, marker 1':
+                print(res.headers['X-Staticmap-API-Warning'])
+                return "Staticmap-API-Warning Error geocoding"
+            else:
+                return source
+        except:
+            return source

@@ -22,8 +22,16 @@ function getRequest(input){
         } else {
             renderPapy(response.papy + '<br>' + response.summary);
             renderPapy('<a class="text-white" target="_blank" href=' +  response.url +  '> Lien vers sa page Wikipedia </a>');
-            let gmap = "<img src='https://maps.googleapis.com/maps/api/staticmap?center=" + response.gmap_search + "&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C" + response.gmap_search + "&key=" + response.gmap_key + "'>";
-            renderPapy(gmap);
+
+            if (response.map != "Staticmap-API-Warning Error geocoding"){
+                let gmap = "<img src=" + response.gmap + ">";
+                console.log(gmap);
+                renderPapy(gmap);
+                console.log(response.map);
+            } else {
+                console.log(response.map);
+            }
+
         }
 
     });
