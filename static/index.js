@@ -36,6 +36,7 @@ function getRequest(input){
 
 };
 
+
 $( "#submit" ).on( "click", function(){
     let button = $(event.target);
     let input = button.prev().val();
