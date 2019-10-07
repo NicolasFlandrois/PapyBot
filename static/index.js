@@ -23,18 +23,11 @@ function getRequest(input){
             renderPapy(response.papy + '<br>' + response.summary);
             renderPapy('<a class="text-white" target="_blank" href=' +  response.url +  '> Lien vers sa page Wikipedia </a>');
 
-            try{
-                if (response.map != "Staticmap-API-Warning Error geocoding"){
-                    let gmap = "<img src=" + response.gmap + ">";
-                    console.log(gmap);
-                    renderPapy(gmap);
-                    console.log(response.map);
-                } else {
-                    console.log(response.map);
-                }
-            }
-            catch(err){
-                console.log(err)
+            if (response.gmapsource != "Error"){
+                let gmap = "<a target='_blank' href=" + response.gmaplink + "> <img src=" + response.gmapsource + " alt='Google Map'> </a>";
+                renderPapy(gmap);
+            } else {
+
             }
 
         }

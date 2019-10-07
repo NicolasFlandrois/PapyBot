@@ -29,12 +29,12 @@ def msg(msg):
     if wiki['status'] is 1:
         send = {'status': wiki['status'], 'papy': papyChat,
                 'summary': wiki['summary'],
-                'url': wiki['url'], 'gmap': gmap}
+                'url': wiki['url'], 'gmapsource': gmap['source'],
+                'gmaplink': gmap['link']}
     else:
         send = {'status': wiki['status'], 'papy': papyChat,
                 'error': wiki['error']}
 
-    print(gmap)
     return jsonify(send)
 
 
