@@ -72,9 +72,10 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
     @staticmethod
     def gmap(request: str, key_path, key_name):
         """
-        Given a String request, this function will return a string combined with
-        the Gmap API JS Key, and the search extention, All formated to Gmap API
-        specifications.
+        Given a String request, this function will return a dictionnary
+        combined with the Gmap Static API Key, and the search extention,
+        All formated to Gmap Static API specifications. The Link argument
+        refers to a clickable Link to include in the HTML links' <a></a> anchor.
         """
         search = '+'.join(request.split())
         source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={Papy.get_json(key_path)[key_name]}"
