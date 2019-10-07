@@ -78,12 +78,10 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
         """
         search = '+'.join(request.split())
         source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={Papy.get_json(key_path)[key_name]}"
-        print(source)
         link = f"https://www.google.com/maps/place/{search}/"
         try:
             res = requests.get(source)
             if res.headers['X-Staticmap-API-Warning'] == 'Error geocoding: center, marker 1':
-                print(res.headers['X-Staticmap-API-Warning'])
                 return {'source': 'Error', 'link': 'Error'}
             else:
                 return {'source': source, 'link': link}
