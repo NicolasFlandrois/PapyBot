@@ -12,7 +12,7 @@ import wikipedia
 
 wikipedia.set_lang("fr")
 
-# How to do unit test on Flask > server.py?
+# Unit Testing papybot.controls.py
 
 
 def test_get_json():
@@ -65,7 +65,7 @@ def test_randomchat(monkeypatch, tmpdir):
 def test_wikipedia():
     assert type(Papy.wikipedia('London')) == dict
     assert Papy.wikipedia('Kennedy') == {'status': 1,
-    'summary': "John Fitzgerald Kennedy /d͡ʒɑn fɪtsˈd͡ʒɛɹəld ˈkɛnədi/, dit \
+                                         'summary': "John Fitzgerald Kennedy /d͡ʒɑn fɪtsˈd͡ʒɛɹəld ˈkɛnədi/, dit \
 Jack Kennedy, communément appelé John Kennedy et par ses initiales JFK, né le \
 29 mai 1917 à Brookline (Massachusetts) et mort assassiné le 22 novembre 1963 \
 à Dallas (Texas), est un homme d'État américain, 35e président des États-Unis. \
@@ -78,7 +78,9 @@ son engagement pour le traité d'interdiction partielle des essais nucléaires, 
 le programme Apollo dans le cadre de la course à l'espace, son opposition à \
 la construction du mur de Berlin, sa politique d'égalité des genres et \
 son assassinat.",
-'url': 'https://fr.wikipedia.org/wiki/John_Fitzgerald_Kennedy'}
+                                         'url': 'https://fr.wikipedia.org\
+/wiki/John_Fitzgerald_Kennedy'}
+
     assert Papy.wikipedia('zsecfu') == {'status': 0,
                                         'error': 'Merci de redéfinir \
 ta question, plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
@@ -115,7 +117,50 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 
     assert Papy.wikipedia('zsecfu') == res
 
-# NB: Google Map API is Managed by JavaScript.
-# Therefor no unit test mock related to Gmap here.
 
-# Flask Unit Testing
+def test_success_gmap(monkeypatch):
+
+    def mock_success():
+        # return
+        pass
+
+    parsed = 'Paris'
+    success = {'source': 'https://maps.googleapis.com/maps/api/staticmap?\
+center=Paris&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C\
+Paris&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
+               'link': 'https://www.google.com/maps/place/Paris/'}
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mock_success)
+    assert Papy.gmap(parsed, 'config.json', 'testkey') == success
+
+
+def test_fails_gmap(monkeypatch):
+
+    parsed = 'Hello (Chanson)'
+    fails = {'source': 'Error', 'link': 'Error'}
+
+    def mock_fails():
+        # return {'X-Staticmap-API-Warning': 'Error geocoding: center, marker 1'}
+        return fails
+
+    monkeypatch.setattr(urllib.request, 'urlopen', mock_fails)
+    assert Papy.gmap(parsed, 'config.json', 'testkey') == fails
+
+# Flask Unit Testing > server.py
+# How to do unit test on Flask > server.py?
+
+
+def test_index():
+    pass
+    # return render_template('index.html', greetings=greetings)
+
+
+def test_msg():
+    pass
+    # return jsonify(send)
+    # Success: {'status': wiki['status'], 'papy': papyChat,
+    #             'summary': wiki['summary'],
+    #             'url': wiki['url'], 'gmapsource': gmap['source'],
+    #             'gmaplink': gmap['link']}
+    # Fails : send = {'status': wiki['status'], 'papy': papyChat,
+    #             'error': wiki['error']}
