@@ -1,6 +1,6 @@
 #!/usr/bin/python3.7
 # UTF8
-# Date: Fri 30 Aug 2019 21:46:04 CEST
+# Date: Wed 02 Oct 2019 16:51:11 CEST
 # Author: Nicolas Flandrois
 
 import json
@@ -27,8 +27,9 @@ class Papy:
         """
 
         ignore_set = set(Papy.get_json(path)["parser"])
-        msg_set = set(msg.lower().replace(".", "").replace(",", "").replace("?", "")
-                      .replace(";", "").replace(":", "").replace("!", "").split())
+        msg_set = set(msg.lower().replace(".", "").replace(",", "")
+                      .replace("?", "").replace(";", "").replace(":", "")
+                      .replace("!", "").split())
 
         return " ".join(msg_set.difference(ignore_set)).capitalize()
 
@@ -60,8 +61,30 @@ class Papy:
         In the end, this function returns a Dictionary with Status & Message
         """
         try:
-            return {'status': 1, 'summary': f'{wikipedia.summary(request, sentences=3)}',
-                    'url': f'{wikipedia.page(request).url}'}
+            return {'status': 1, 'summary': wikipedia.summary(request,
+                                                              sentences=3),
+                    'url': wikipedia.page(request).url}
         except:
-            return {'status': 0, 'error': f"Merci de redéfinir ta question, plus \
-précisément. (e.g. Ajoute un pays)\nJe te propose : {', '.join(set([i for i in wikipedia.search(request)]))}"}
+            return {'status': 0, 'error': f"Merci de redéfinir ta question, \
+plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
+{', '.join(set([i for i in wikipedia.search(request)]))}"}
+
+    @staticmethod
+    def gmap(request: str, key_path, key_name):
+        """
+        Given a String request, this function will return a dictionnary
+        combined with the Gmap Static API Key, and the search extention,
+        All formated to Gmap Static API specifications. The Link argument
+        refers to a clickable Link to include in the HTML links' <a></a> anchor.
+        """
+        search = '+'.join(request.split())
+        source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={Papy.get_json(key_path)[key_name]}"
+        link = f"https://www.google.com/maps/place/{search}/"
+        try:
+            res = requests.get(source)
+            if res.headers['X-Staticmap-API-Warning'] == 'Error geocoding: center, marker 1':
+                return {'source': 'Error', 'link': 'Error'}
+            else:
+                return {'source': source, 'link': link}
+        except:
+            return {'source': source, 'link': link}
