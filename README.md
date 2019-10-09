@@ -36,6 +36,7 @@ On the server machine, launch the server.py file with Python 3.6 (and higher).
 Depending on your server install, you may run this program locally and interact with it in your web browser on IP ***127.0.0.1:5000***.
 For other server install refer to your server administrator, or DNS/IP registration, for further details.
 This program is compatible with [Heroku](https://www.heroku.com/free). You may install it on Heroku, and run the page directly from there.
+This version is available on [my Heroku space](https://papybotapp.herokuapp.com/)
 
 -------------------------------------------------------------
 
