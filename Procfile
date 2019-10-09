@@ -1,2 +1,2 @@
-web: gunicorn fbapp:app
+web: gunicorn PapyBot:app
 init: FLASK_APP=server.py
