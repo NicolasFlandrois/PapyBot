@@ -10,7 +10,7 @@ from boto.s3.connection import S3Connection
 import os
 
 
-config = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+config_key = S3Connection(os.environ['Gmapkey'])
 
 wikipedia.set_lang("fr")
 
@@ -29,7 +29,7 @@ def msg(msg):
     parsed = Papy.parser(msg, "./papybot/data.json")
     wiki = Papy.wikipedia(parsed)
     papyChat = Papy.randomchat(wiki['status'], './papybot/data.json')
-    gmap = Papy.gmap(parsed, config['Gmapkey'])
+    gmap = Papy.gmap(parsed, config_key)
 
     if wiki['status'] is 1:
         send = {'status': wiki['status'], 'papy': papyChat,
