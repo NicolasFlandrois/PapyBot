@@ -7,9 +7,10 @@ from flask import Flask, render_template, jsonify
 from papybot.controls import *
 import wikipedia
 from boto.s3.connection import S3Connection
+import os
 
 
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+config = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 wikipedia.set_lang("fr")
 
@@ -28,7 +29,7 @@ def msg(msg):
     parsed = Papy.parser(msg, "./papybot/data.json")
     wiki = Papy.wikipedia(parsed)
     papyChat = Papy.randomchat(wiki['status'], './papybot/data.json')
-    gmap = Papy.gmap(parsed, 'config.json', 'Gmapkey')
+    gmap = Papy.gmap(parsed, config['Gmapkey'])
 
     if wiki['status'] is 1:
         send = {'status': wiki['status'], 'papy': papyChat,
