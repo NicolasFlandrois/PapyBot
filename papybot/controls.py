@@ -70,7 +70,7 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
 {', '.join(set([i for i in wikipedia.search(request)]))}"}
 
     @staticmethod
-    def gmap(request: str, key_path, key_name):
+    def gmap(request: str, API_Key):
         """
         Given a String request, this function will return a dictionnary
         combined with the Gmap Static API Key, and the search extention,
@@ -78,7 +78,7 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
         refers to a clickable Link to include in the HTML links' <a></a> anchor.
         """
         search = '+'.join(request.split())
-        source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={Papy.get_json(key_path)[key_name]}"
+        source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={API_Key}"
         link = f"https://www.google.com/maps/place/{search}/"
         try:
             res = requests.get(source)
