@@ -6,11 +6,10 @@
 from flask import Flask, render_template, jsonify
 from papybot.controls import *
 import wikipedia
-from boto.s3.connection import S3Connection
 import os
 
 
-config_key = S3Connection(os.environ['Gmapkey'])
+config_key = os.environ.get('Gmapkey')
 
 wikipedia.set_lang("fr")
 
