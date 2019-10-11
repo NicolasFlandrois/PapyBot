@@ -15,8 +15,9 @@ function renderPapy(req){
 
 
 function getRequest(input){
+    renderUser(input);
     $.get(url+input, null, function(response){
-        renderUser(input);
+
         if (response.status == 0) {
             renderPapy(response.papy + '<br>' + response.error);
         } else {
