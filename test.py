@@ -118,9 +118,8 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
     assert Papy.wikipedia('zsecfu') == res
 
 
-def test_success_gmap(monkeypatch):
-
-    def mock_success():
+class Mock_Success_Res:
+    def headers():
         return {'Content-Type': 'image/png',
                 'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
                 'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
@@ -137,6 +136,12 @@ def test_success_gmap(monkeypatch):
 v="46,43",h3-Q048=":443"; ma=2592000,h3-Q046=":443"; \
 ma=2592000,h3-Q043=":443"; ma=2592000'}
 
+
+def test_success_gmap(monkeypatch):
+
+    def mock_success():
+        return Mock_Success_Res()
+
     success = {'source': 'https://maps.googleapis.com/maps/api/staticmap?\
 center=Paris&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C\
 Paris&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
@@ -144,17 +149,13 @@ Paris&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
 
     parsed = 'Paris'
 
-    monkeypatch.setattr(Papy, 'requests.get', mock_success)
+    monkeypatch.setattr(requests, 'get', mock_success)
 
     assert Papy.gmap(parsed, 'config.json', 'testkey') == success
 
 
-def test_fails_gmap(monkeypatch):
-
-    parsed = 'Hello (Chanson)'
-    fails = {'source': 'Error', 'link': 'Error'}
-
-    def mock_fails():
+class Mock_Fails_Res:
+    def headers():
         return {'Content-Type': 'image/png',
                 'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
                 'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
@@ -171,5 +172,14 @@ def test_fails_gmap(monkeypatch):
 h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; \
 ma=2592000'}
 
-    monkeypatch.setattr(res, 'headers', mock_fails)
+
+def test_fails_gmap(monkeypatch):
+
+    parsed = 'Hello (Chanson)'
+    fails = {'source': 'Error', 'link': 'Error'}
+
+    def mock_fails():
+        return Mock_Fails_Res()
+
+    monkeypatch.setattr(requests, 'get', mock_fails)
     assert Papy.gmap(parsed, 'config.json', 'testkey') == fails
