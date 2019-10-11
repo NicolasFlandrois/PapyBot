@@ -6,6 +6,7 @@
 from io import BytesIO
 import json
 from papybot.controls import *
+import requests
 from server import *
 import urllib.request
 import wikipedia
@@ -119,58 +120,54 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 
 
 class Mock_Success_Res:
-    @staticmethod
-    def headers():
-        return {'Content-Type': 'image/png',
-                'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
-                'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
-                'Cache-Control': 'public, max-age=86400',
-                'Vary': 'Accept-Language',
-                'X-Staticmap-API-Warning': 'Error geocoding: marker 1',
-                'Access-Control-Allow-Origin': '*',
-                'Server': 'scaffolding on HTTPServer2',
-                'Content-Length': '93733',
-                'X-XSS-Protection': '0',
-                'X-Frame-Options': 'SAMEORIGIN',
-                'Server-Timing': 'gfet4t7; dur=166',
-                'Alt-Svc': 'quic=":443"; ma=2592000; \
+    headers = {'Content-Type': 'image/png',
+               'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
+               'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
+               'Cache-Control': 'public, max-age=86400',
+               'Vary': 'Accept-Language',
+               'X-Staticmap-API-Warning': 'Error geocoding: marker 1',
+               'Access-Control-Allow-Origin': '*',
+               'Server': 'scaffolding on HTTPServer2',
+               'Content-Length': '93733',
+               'X-XSS-Protection': '0',
+               'X-Frame-Options': 'SAMEORIGIN',
+               'Server-Timing': 'gfet4t7; dur=166',
+               'Alt-Svc': 'quic=":443"; ma=2592000; \
 v="46,43",h3-Q048=":443"; ma=2592000,h3-Q046=":443"; \
 ma=2592000,h3-Q043=":443"; ma=2592000'}
 
 
 def test_success_gmap(monkeypatch):
 
-    def mock_success():
+    def mock_success(*args, **kwargs):
         return Mock_Success_Res()
 
-    success = {'source': 'https://maps.googleapis.com/maps/api/staticmap?\
-center=Paris&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C\
-Paris&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
-               'link': 'https://www.google.com/maps/place/Paris/'}
+    expected_success = {'source': 'https://maps.googleapis.com/maps/api/\
+staticmap?center=Paris&zoom=10&size=150x150&scale=2&format=png32&markers=\
+size:tiny%7CParis&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
+                        'link': 'https://www.google.com/maps/place/Paris/'}
 
     parsed = 'Paris'
 
     monkeypatch.setattr(requests, 'get', mock_success)
 
-    assert Papy.gmap(parsed, 'config.json', 'testkey') == success
+    assert Papy.gmap(parsed, 'config.json', 'testkey') == expected_success
 
 
 class Mock_Fails_Res:
-    @staticmethod
-    def headers():
-        return {'Content-Type': 'image/png',
-                'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
-                'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
-                'Cache-Control': 'public, max-age=86400',
-                'Vary': 'Accept-Language',
-                'X-Staticmap-API-Warning': 'Error geocoding: center, marker 1',
-                'Access-Control-Allow-Origin': '*',
-                'Server': 'scaffolding on HTTPServer2',
-                'Content-Length': '4714',
-                'X-XSS-Protection': '0',
-                'X-Frame-Options': 'SAMEORIGIN',
-                'Server-Timing': 'gfet4t7; dur=283',
-                'Alt-Svc': 'quic=":443"; ma=2592000; v="46,43",\
+    headers = {'Content-Type': 'image/png',
+               'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
+               'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
+               'Cache-Control': 'public, max-age=86400',
+               'Vary': 'Accept-Language',
+               'X-Staticmap-API-Warning': 'Error geocoding: center, marker 1',
+               'Access-Control-Allow-Origin': '*',
+               'Server': 'scaffolding on HTTPServer2',
+               'Content-Length': '4714',
+               'X-XSS-Protection': '0',
+               'X-Frame-Options': 'SAMEORIGIN',
+               'Server-Timing': 'gfet4t7; dur=283',
+               'Alt-Svc': 'quic=":443"; ma=2592000; v="46,43",\
 h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; \
 ma=2592000'}
 
@@ -178,10 +175,10 @@ ma=2592000'}
 def test_fails_gmap(monkeypatch):
 
     parsed = 'Hello (Chanson)'
-    fails = {'source': 'Error', 'link': 'Error'}
+    expected_fails = {'source': 'Error', 'link': 'Error'}
 
-    def mock_fails():
+    def mock_fails(*args, **kwargs):
         return Mock_Fails_Res()
 
     monkeypatch.setattr(requests, 'get', mock_fails)
-    assert Papy.gmap(parsed, 'config.json', 'testkey') == fails
+    assert Papy.gmap(parsed, 'config.json', 'testkey') == expected_fails
