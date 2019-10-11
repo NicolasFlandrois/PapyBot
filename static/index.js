@@ -16,7 +16,7 @@ function renderPapy(req){
 
 function getRequest(input){
     renderUser(input);
-    document.documentElement.scrollTop += 1000;
+    document.documentElement.scrollTop += 1000; //Firefox Auto ScrollTop
     $.get(url+input, null, function(response){
 
         if (response.status == 0) {
@@ -34,7 +34,7 @@ function getRequest(input){
 
         }
 
-        document.documentElement.scrollTop += 300;
+        document.documentElement.scrollTop += 300; //Firefox Auto ScrollTop
 
 
     });
