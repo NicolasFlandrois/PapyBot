@@ -2,7 +2,3 @@
 # UTF8
 # Date: Wed 02 Oct 2019 16:51:11 CEST
 # Author: Nicolas Flandrois
-
-
-from flask import Flask
-from server import app
