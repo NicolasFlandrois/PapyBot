@@ -5,11 +5,11 @@
 let url = location.origin + '/msg/';
 
 function renderUser(res){
-    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white'>" + res + "</div>");
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white'>" + res + "</div>").fadeIn( 1000 );
 };
 
 function renderPapy(req){
-    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white'>" + req + "</div>");
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white'>" + req + "</div>").fadeIn( 1000 );
 };
 
 
@@ -32,6 +32,11 @@ function getRequest(input){
             }
 
         }
+
+        let scroll_to_bottom = document.documentElement;
+        scroll_to_bottom.scrollTop += 300    //document.documentElement.offsetHeight;
+
+        // $('#dialogBox').scrollTop(300);
 
     });
 
