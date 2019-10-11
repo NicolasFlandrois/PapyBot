@@ -5,18 +5,20 @@
 let url = location.origin + '/msg/';
 
 function renderUser(res){
-    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white'>" + res + "</div>");
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white'>" + res + "</div>").fadeIn( 1000 );
 };
 
 function renderPapy(req){
-    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white'>" + req + "</div>");
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white'>" + req + "</div>").fadeIn( 1000 );
 };
 
 
 
 function getRequest(input){
+    renderUser(input);
+    document.documentElement.scrollTop += 1000;
     $.get(url+input, null, function(response){
-        renderUser(input);
+
         if (response.status == 0) {
             renderPapy(response.papy + '<br>' + response.error);
         } else {
@@ -31,6 +33,9 @@ function getRequest(input){
             }
 
         }
+
+        document.documentElement.scrollTop += 300;
+
 
     });
 
