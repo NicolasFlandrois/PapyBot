@@ -121,16 +121,31 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 def test_success_gmap(monkeypatch):
 
     def mock_success():
-        # return
-        pass
+        return {'Content-Type': 'image/png',
+                'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
+                'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
+                'Cache-Control': 'public, max-age=86400',
+                'Vary': 'Accept-Language',
+                'X-Staticmap-API-Warning': 'Error geocoding: marker 1',
+                'Access-Control-Allow-Origin': '*',
+                'Server': 'scaffolding on HTTPServer2',
+                'Content-Length': '93733',
+                'X-XSS-Protection': '0',
+                'X-Frame-Options': 'SAMEORIGIN',
+                'Server-Timing': 'gfet4t7; dur=166',
+                'Alt-Svc': 'quic=":443"; ma=2592000; \
+v="46,43",h3-Q048=":443"; ma=2592000,h3-Q046=":443"; \
+ma=2592000,h3-Q043=":443"; ma=2592000'}
 
-    parsed = 'Paris'
     success = {'source': 'https://maps.googleapis.com/maps/api/staticmap?\
 center=Paris&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C\
 Paris&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
                'link': 'https://www.google.com/maps/place/Paris/'}
 
-    monkeypatch.setattr(urllib.request, 'urlopen', mock_success)
+    parsed = 'Paris'
+
+    monkeypatch.setattr(Papy, 'requests.get', mock_success)
+
     assert Papy.gmap(parsed, 'config.json', 'testkey') == success
 
 
@@ -140,27 +155,21 @@ def test_fails_gmap(monkeypatch):
     fails = {'source': 'Error', 'link': 'Error'}
 
     def mock_fails():
-        # return {'X-Staticmap-API-Warning': 'Error geocoding: center, marker 1'}
-        return fails
+        return {'Content-Type': 'image/png',
+                'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
+                'Expires': 'Sat, 12 Oct 2019 18:04:07 GMT',
+                'Cache-Control': 'public, max-age=86400',
+                'Vary': 'Accept-Language',
+                'X-Staticmap-API-Warning': 'Error geocoding: center, marker 1',
+                'Access-Control-Allow-Origin': '*',
+                'Server': 'scaffolding on HTTPServer2',
+                'Content-Length': '4714',
+                'X-XSS-Protection': '0',
+                'X-Frame-Options': 'SAMEORIGIN',
+                'Server-Timing': 'gfet4t7; dur=283',
+                'Alt-Svc': 'quic=":443"; ma=2592000; v="46,43",\
+h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; \
+ma=2592000'}
 
-    monkeypatch.setattr(urllib.request, 'urlopen', mock_fails)
+    monkeypatch.setattr(res, 'headers', mock_fails)
     assert Papy.gmap(parsed, 'config.json', 'testkey') == fails
-
-# Flask Unit Testing > server.py
-# How to do unit test on Flask > server.py?
-
-
-def test_index():
-    pass
-    # return render_template('index.html', greetings=greetings)
-
-
-def test_msg():
-    pass
-    # return jsonify(send)
-    # Success: {'status': wiki['status'], 'papy': papyChat,
-    #             'summary': wiki['summary'],
-    #             'url': wiki['url'], 'gmapsource': gmap['source'],
-    #             'gmaplink': gmap['link']}
-    # Fails : send = {'status': wiki['status'], 'papy': papyChat,
-    #             'error': wiki['error']}
