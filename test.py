@@ -119,6 +119,7 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : '}
 
 
 class Mock_Success_Res:
+    @staticmethod
     def headers():
         return {'Content-Type': 'image/png',
                 'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
@@ -155,6 +156,7 @@ Paris&key=TESTKEY_6-ze^N@U&=v_!z)-$K%$_RANDOMSTR',
 
 
 class Mock_Fails_Res:
+    @staticmethod
     def headers():
         return {'Content-Type': 'image/png',
                 'Date': 'Fri, 11 Oct 2019 18:04:07 GMT',
