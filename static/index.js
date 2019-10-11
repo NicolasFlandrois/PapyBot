@@ -16,6 +16,7 @@ function renderPapy(req){
 
 function getRequest(input){
     renderUser(input);
+    document.documentElement.scrollTop += 1000;
     $.get(url+input, null, function(response){
 
         if (response.status == 0) {
@@ -33,10 +34,8 @@ function getRequest(input){
 
         }
 
-        let scroll_to_bottom = document.documentElement;
-        scroll_to_bottom.scrollTop += 300    //document.documentElement.offsetHeight;
+        document.documentElement.scrollTop += 300;
 
-        // $('#dialogBox').scrollTop(300);
 
     });
 
