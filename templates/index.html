@@ -23,9 +23,17 @@
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-      <!-- Uncompressed JQuery Core 3.4.1 CDN Stable Version -->
+    <!-- Uncompressed JQuery Core 3.4.1 CDN Stable Version -->
 
+    <!-- Import Font Awesome CDN, used for loading wheel spinner -->
+    <script src="https://kit.fontawesome.com/a0c812f13f.js" crossorigin="anonymous"></script>
 
+    <style>
+        body {
+          background-image: url("{{ url_for('static', filename='background.png')}}");
+          background-repeat: repeat;
+        }
+    </style>
 
 </head>
 
