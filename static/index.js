@@ -5,11 +5,14 @@
 let url = location.origin + '/msg/';
 
 function renderUser(res){
-    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white'>" + res + "</div>").fadeIn( 1000 );
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-right rounded-left border-left border-bottom border-secondary shadow-sm bg-success align-middle text-left text-white'>" + res + "</div>").fadeIn( 3000 );
+    $( "#dialogBox" ).append("<div id='spinr' class='col-7 d-flex float-left'> <i class='fas fa-spinner fa-spin' style='font-size:30px'></i></div>").fadeIn( 3000 );
 };
 
 function renderPapy(req){
-    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white'>" + req + "</div>").fadeIn( 1000 );
+    $("i").fadeOut();
+    $("#spinr").hide();
+    $( "#dialogBox" ).append("<div class='col-7 d-flex justify-content-center m-1 p-3 float-left rounded-right border-right border-bottom border-secondary shadow-sm bg-primary align-middle text-left text-white'>" + req + "</div>").fadeIn( 3000 );
 };
 
 
