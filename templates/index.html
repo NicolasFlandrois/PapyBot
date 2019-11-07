@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
     <!-- Bootstrap Settings -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width = device-width, initial-scale = 1 shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Papy Bot !</title>
@@ -38,11 +38,11 @@
 </head>
 
 <body>
-    <header class="navbar fixed-top navbar-expand navbar-dark flex-column flex-md-row p-4 h-20 bd-navbar bg-dark text-white">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark d-flex justify-content-around p-4 h-20 bd-navbar bg-dark text-white">
 
         <img src="{{ url_for('static', filename='grandpy-round.png') }}" width="75" height="auto" class="navbar-brand mr-0 mr-md-2  mx-righ" viewbox="0 0 612 612" role="img" focusable="false">
 
-        <h3 class="mx-auto text-align-center display-4 mr-15" style="font-family: 'Pacifico', cursive;">Papy Bot</h3>
+        <h2 class="mx-auto text-align-center mr-15" style="font-family: 'Pacifico', cursive;">Papy Bot</h2>
 
         <div class="group-append dropdown">
             <button class="btn btn-outline-light dropdown-toggle mx-left" type="button" data-toggle="dropdown" data-display="static">Info
@@ -60,7 +60,7 @@
                 </div>
             </button>
         </div>
-    </header>
+    </nav>
 
 
     <main class="bd-content ml-4 mr-4" role="main">
