@@ -22,8 +22,8 @@ class Papy:
     @staticmethod
     def parser(msg: str, path):
         """
-        Given a string, this function will split the string into a set of words,
-        and then
+        Given a string, this function will split the string into
+        a set of words, and then output relevent/tergeted set of words.
         """
 
         ignore_set = set(Papy.get_json(path)["parser"])
@@ -75,14 +75,18 @@ plus précisément. (e.g. Ajoute un pays)\nJe te propose : \
         Given a String request, this function will return a dictionnary
         combined with the Gmap Static API Key, and the search extention,
         All formated to Gmap Static API specifications. The Link argument
-        refers to a clickable Link to include in the HTML links' <a></a> anchor.
+        refers to a clickable Link to include in the
+        HTML links' <a></a> anchor.
         """
         search = '+'.join(request.split())
-        source = f"https://maps.googleapis.com/maps/api/staticmap?center={search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C{search}&key={Papy.get_json(key_path)[key_name]}"
+        source = f"https://maps.googleapis.com/maps/api/staticmap?center=\
+{search}&zoom=10&size=150x150&scale=2&format=png32&markers=size:tiny%7C\
+{search}&key={Papy.get_json(key_path)[key_name]}"
         link = f"https://www.google.com/maps/place/{search}/"
         try:
             res = requests.get(source)
-            if res.headers['X-Staticmap-API-Warning'] == 'Error geocoding: center, marker 1':
+            if res.headers['X-Staticmap-API-Warning'] == \
+                    'Error geocoding: center, marker 1':
                 return {'source': 'Error', 'link': 'Error'}
             else:
                 return {'source': source, 'link': link}

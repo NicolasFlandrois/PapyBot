@@ -66,10 +66,12 @@ def test_randomchat(monkeypatch, tmpdir):
 def test_wikipedia():
     assert type(Papy.wikipedia('London')) == dict
     assert Papy.wikipedia('Kennedy') == {'status': 1,
-                                         'summary': "John Fitzgerald Kennedy /d͡ʒɑn fɪtsˈd͡ʒɛɹəld ˈkɛnədi/, dit \
+                                         'summary': "John Fitzgerald Kennedy \
+/d͡ʒɑn fɪtsˈd͡ʒɛɹəld ˈkɛnədi/, dit \
 Jack Kennedy, communément appelé John Kennedy et par ses initiales JFK, né le \
 29 mai 1917 à Brookline (Massachusetts) et mort assassiné le 22 novembre 1963 \
-à Dallas (Texas), est un homme d'État américain, 35e président des États-Unis. \
+à Dallas (Texas), est un homme d'État américain, \
+35e président des États-Unis. \
 Entré en poste le 20 janvier 1961, il est, à 43 ans, le plus jeune président \
 élu des États-Unis, et également le plus jeune président à mourir, moins de \
 trois ans après son entrée à la Maison-Blanche, à l'âge de 46 ans.\nIl laisse \
