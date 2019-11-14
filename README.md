@@ -7,7 +7,7 @@
 
 **License**: MIT License Copyright (c) 2019 Nicolas Flandrois
 
-**Version**: Beta - v1
+**Version**: v1.2
 
 -------------------------------------------------------------
 
