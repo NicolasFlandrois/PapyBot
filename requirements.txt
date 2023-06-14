@@ -15,7 +15,7 @@ pymediawiki==0.6.1
 pyparsing==2.4.2
 pytest==5.1.2
 pytest-watch==4.2.0
-requests==2.22.0
+requests==2.31.0
 Unidecode==1.1.1
 urllib3==1.26.5
 watchdog==0.9.0
